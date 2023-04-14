@@ -1,0 +1,27 @@
+.Signinshow {
+ }
+
+.Signinhid {
+  display: none;
+ }
+
+.Adminpageshow {
+}
+
+.Adminpagehid {
+   display: none;
+}
+
+.Dataprocessshow {
+ display: flex;
+ flex-direction: column;
+ align-items: center;
+ justify-content: top;
+ width: 100vw;
+ height: 100vh;
+}
+
+.Dataprocesshid {
+   display: none;
+}
+

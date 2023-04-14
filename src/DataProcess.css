@@ -1,0 +1,87 @@
+.Topframe {
+ display: flex;
+ flex-direction: rows;
+ justify-content: center;
+ align-items: center;
+ width: 100vw;
+ height: 6vh;
+ border: 1px red solid;
+}
+
+.Caridata3{
+ z-index:3;
+}
+
+.Caridata2{
+ z-index:2;
+}
+
+.Caridata2{
+ z-index:1;
+}
+
+.Isidata3{
+ z-index: 3;
+ margin-left: -1vw;
+}
+
+.Isidata2{
+ z-index: 2;
+ margin-left: -1vw;
+}
+
+.Isidata1{
+ z-index: 1;
+ margin-left: -1vw;
+}
+
+.Updatedata3{
+ z-index: 3;
+ margin-left: -1vw;
+}
+
+.Updatedata2{
+ z-index: 2;
+ margin-left: -1vw;
+}
+
+
+.Updatedata1{
+ z-index: 1;
+ margin-left: -1vw;
+}
+
+.Bottomframe {
+ display: flex;
+ flex-direction: column;
+ justify-content: center;
+ align-items: center;
+ width: 100vw;
+ height: 95vh;
+ border: 1px red solid;
+ z-index: 50;
+ margin-top: -1vh; 
+}
+
+.Searchshow {
+}
+
+.Searchhid {
+ display: none;
+}
+
+.Inputdatashow {
+}
+
+.Inputdatahid {
+ display: none;
+}
+
+.Updatedatashow {
+}
+
+.Updatedatahid {
+ display: none;
+}
+
+

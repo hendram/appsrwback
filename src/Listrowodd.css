@@ -1,0 +1,82 @@
+
+.div-table-rowodd {
+  display: flex;
+  flex-direction: row;
+  width: 67vw;
+  height: fit-content;
+  background-color: white;
+   padding-top: 0.6vh;
+  padding-bottom: 0.6vh;
+  padding-left: 0.6vw;
+  padding-right: 0.6vw;
+ align-self: center;
+  justify-content: flex-start;
+  align-items: center;  
+}
+
+.div-table-colodd1 {
+  display: block;         
+  width: 3vw;
+  text-align: left;         
+  background-color: white;  
+}
+
+.colodd1textspan{
+ font-family: serif;
+ font-size: 1vw;
+ white-space: nowrap;
+}
+
+.div-table-colodd2 {
+  display: block;         
+  width: 15vw;
+  text-align: left;         
+  background-color: white;
+  
+}
+
+.colodd2textspan{  
+ font-family: serif;
+font-size: 1vw;
+ white-space: nowrap;
+}
+
+.div-table-colodd3 {
+  display: block;         
+  width: 12vw;
+  text-align: left;         
+  background-color: white;  
+}
+
+.colodd3textspan{  
+ font-family: serif;
+font-size: 1vw;
+ white-space: nowrap;
+}
+
+.div-table-colodd4 {
+  display: block;         
+  width: 9.5vw;
+  text-align: left;         
+  background-color: white;  
+}
+
+.colodd4textspan{  
+ font-family: serif;
+font-size: 1vw;
+ white-space: nowrap;
+}
+
+.div-table-colodd5 {
+  display: block;         
+  width: 19vw;
+  text-align: left;         
+  background-color: white;  
+}
+
+.colodd5textspan{  
+ font-family: serif;
+font-size: 1vw;
+ white-space: nowrap;
+}
+
