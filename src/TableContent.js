@@ -1,33 +1,27 @@
-import React, {useRef} from 'react';
+import React, {useRef, useState, useEffect} from 'react';
 import './TableContent.css';
 import Listrowodd from './Listrowodd';
 import Listroweven from './Listroweven';
 
-const TableContent = () => {
+const TableContent = (props) => {
 
-const listrow = useRef([]);
-const data = useRef([["1", "John Doe", "LM Alam Sutra", "08123456789", "anastasia.flaviana@loanmarket.co.id"],
-                    ["2", "HJ Herlandin Laksmiwat", "LM Intercon", "08123456789", "andin.laksmiwalti@gmail.com"],
-                    ["3", "Harimurni", "LM Kelapa Gading", "08123456789", "harimurni@yahoo.com"],
-                    ["4", "Djoni Gunawan", "LM Kemanggisan", "08123456789", "djoni.gunawan@loanmarket.co.id"],
-                    ["5", "David Lai Min Layardi", "LM Kelapa Gading", "08123456789", "david.laimin@gmail.com"],
-                    ["6", "HJ Herlandin Laksmiwat", "LM Intercon", "08123456789", "andin.lasmiwati@gmail.com"],
-                    ["7", "Harimurni", "LM Kelapa Gading", "08123456789", "harimurni@yahoo.com"],
-                    ["8", "Djoni Gunawan", "LM Kemanggisan", "08123456789", "djoni.gunawan@loanmarket.co.id"],
-                    ["9", "David Lai Min Layardi", "LM Kelapa Gading", "08123456789", "david.laimin@gmail.com"],
-                ["10", "Djoni Gunawan", "LM Kemanggisan", "08123456789", "djoni.gunawan@loanmarket.co.id"]]);
+const [listrow, setListrow]  = useState([]);
 
-
-if(listrow.current.length === 0){
-for(let a = 0; a < data.current.length; a++){
+useEffect(() =>  {
+let newlistrow = [];
+for(let a = 0; a < props.dataget.length; a++){
+           console.log(props.dataget[a]);
        if((a % 2 === 0) || (a === 0)){
-           listrow.current.push(<Listroweven key={a} dataeven = {data.current[a]} />);
+           newlistrow.push(<Listroweven key={a} dataeven = {props.dataget[a]} />);
     }
       else {
-        listrow.current.push(<Listrowodd key={a} dataodd = {data.current[a]} />);
+        newlistrow.push(<Listrowodd key={a} dataodd = {props.dataget[a]} />);
 }
 }
-}
+
+setListrow(newlistrow);
+}, [JSON.stringify(props.dataget)]);
+
  
 
 return(
@@ -79,7 +73,7 @@ return(
                      <div className="colfirst6textspan">Action
                         </div></div>
              </div>
-        {listrow.current}
+        {listrow}
 </div>
 );
 

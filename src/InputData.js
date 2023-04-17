@@ -2,6 +2,8 @@ import React, {useRef} from 'react';
 
 const InputData = () => {
 
+
+
 const nama = useRef(null);
 const tempatlahir = useRef(null);
 const tgllahir = useRef(null);
@@ -41,7 +43,19 @@ const handleSubmit = async (event) => {
 }).then((response) => response.json()
    ).then(function(data){
     if(data.answer === "ok"){
-         // harus direset all
+
+    nama.current.value = "";
+   tempatlahir.current.value = "";
+   tgllahir.current.value = "";
+   nohp.current.value = "";
+   tower.current.value = "";
+   unit.current.value = "";
+   status.current.value = "";
+   periodsewa.current.value = "";
+   agen.current.value = "";
+   emergencyhp.current.value = "";
+   pemilikunit.current.value = "";
+
 }
 });
 
@@ -51,53 +65,66 @@ const handleReset = (event) => {
    event.stopPropagation();
     event.preventDefault();
 
+    nama.current.value = "";
+   tempatlahir.current.value = "";
+   tgllahir.current.value = "";
+   nohp.current.value = "";
+   tower.current.value = "";
+   unit.current.value = "";
+   status.current.value = "";
+   periodsewa.current.value = "";
+   agen.current.value = "";
+   emergencyhp.current.value = "";
+   pemilikunit.current.value = "";
+
+
 }
 
 return(
   <div>
    <div>
    <span>Nama:</span>
-   <input type="text" width="5vw" ref={nama.current}/>
+   <input type="text" width="5vw" ref={nama}/>
     </div>
    <div>
    <span>Tempat lahir:</span>
-   <input type="text" width="5vw" ref={tempatlahir.current}/>
+   <input type="text" width="5vw" ref={tempatlahir}/>
     </div>
    <div>
    <span>Tanggal lahir:</span>
-   <input type="text" width="5vw" ref={tgllahir.current} />
+   <input type="text" width="5vw" ref={tgllahir} />
     </div>
    <div>
    <span>No hp:</span>
-   <input type="text" width="5vw" ref={nohp.current} />
+   <input type="text" width="5vw" ref={nohp} />
     </div>
    <div>
    <span>Tower:</span>
-   <input type="text" width="5vw" ref={tower.current} />
+   <input type="text" width="5vw" ref={tower} />
     </div>
    <div>
    <span>Unit:</span>
-   <input type="text" width="5vw" ref={unit.current} />
+   <input type="text" width="5vw" ref={unit} />
     </div>
    <div>
    <span>Status:</span>
-   <input type="text" width="5vw" ref={status.current} />
+   <input type="text" width="5vw" ref={status} />
     </div>
    <div>
    <span>Period Sewa:</span>
-   <input type="text" width="5vw" ref={periodsewa.current}/>
+   <input type="text" width="5vw" ref={periodsewa}/>
     </div>
    <div>
    <span>Agen:</span>
-   <input type="text" width="5vw" ref={agen.current} />
+   <input type="text" width="5vw" ref={agen} />
     </div>
 <div>
  <span>Emergency hp:</span>
-   <input type="text" width="5vw" ref={emergencyhp.current} />
+   <input type="text" width="5vw" ref={emergencyhp} />
     </div>
   <div>
  <span>Pemilik Unit:</span>
-   <input type="text" width="5vw" ref={pemilikunit.current} />
+   <input type="text" width="5vw" ref={pemilikunit} />
     </div>
 <div>
 <button onClick={(e) => handleSubmit(e)} >

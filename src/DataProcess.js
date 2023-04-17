@@ -5,13 +5,15 @@ import InputData from './InputData';
 import UpdateData from './UpdateData';
 import './DataProcess.css';
 
+export const MainContext2 = React.createContext(null);
+export const MainContext4 = React.createContext(null);
+
 const DataProcess = () => {
 
 const [viewcomp, setViewcomp] = useState({search: "Searchshow", inputdata: "Inputdatahid", 
    updatedata: "Updatedatahid" }); 
 const [menu, setMenu] = useState({caridata: "Caridata3", isidata: "Isidata2",
   updatedata: "Updatedata1" });
-
 
 const handleSearchclick = (event) => {
   event.stopPropagation();
@@ -53,7 +55,20 @@ const handleUpdateclick = (event) => {
      setMenu(newmenu);
 }
 
+const toUpdatedata = () => {
 
+    let newviewcomp = {search: "Searchhid", inputdata: "Inputdatahid", 
+   updatedata: "Updatedatashow" };
+   let newmenu = {caridata: "Caridata1", isidata: "Isidata2",
+  updatedata: "Updatedata3" }
+
+     setViewcomp(newviewcomp);
+     setMenu(newmenu);
+}
+
+
+const b: AppContext2 = {toUpdatedata};
+const d: AppContext4 = {toUpdatedata};
 
 return(
 <div>
@@ -70,7 +85,11 @@ return(
 </div> {/* closing for Topframe */}
 <div className="Bottomframe">
 <div className={viewcomp.search} >
+<MainContext2.Provider value={b} >
+<MainContext4.Provider value={d} >
 <UserManagement />
+</MainContext4.Provider>
+</MainContext2.Provider>
 </div>
 <div className={viewcomp.inputdata} >
 <InputData  />
