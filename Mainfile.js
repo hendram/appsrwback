@@ -7,8 +7,10 @@ const fs = require("fs");
 const bodyParser = require("body-parser");
 const Checkpenghunidb = require('./Checkpenghunidb');
 const Insertpenghunidb = require('./Insertpenghunidb');
-const Updatepenghunidb = require('./Updatepenghunidb');
-const Deletepenghunidb = require('./Deletepenghunidb'); 
+const Updatepenghunidb = require('./Updatepenghunidb'); 
+const Deletepenghunidb = require('./Deletepenghunidb');  
+const Fetchallpenghuninamadb = require('./Fetchallpenghuninamadb');
+const Fetchallpenghuniunitdb = require('./Fetchallpenghuniunitdb');
 const Checkoperatordb = require('./Checkoperatordb'); 
 const Checkoperatorsignindb = require('./Checkoperatorsignindb');
 const Insertoperatordb = require('./Insertoperatordb');
@@ -34,6 +36,9 @@ req.body.invite);
      if(resultnya2 === "1updated"){
          res.send({answer: "ok"});
 }
+       else {
+          res.send({kosong: ""});
+       }
 }
 }
 
@@ -47,6 +52,9 @@ else {
                 if(resultnya === "find"){
 	   res.send({answer: "ok"});
 }
+       else {
+          res.send({kosong: ""});
+       }
 }
 }
 });
@@ -66,7 +74,7 @@ req.body.invite);
     }
                           }
 else {
-   res.send({answer:""});
+   res.send({kosong: ""});
 }
 }
 
@@ -75,23 +83,96 @@ else {
 
 
 app.use('/isidata', async function(req, res) {
-        if(req.body.name && req.body.tempatlahir && req.body.tgllahir && req.body.nohp &&
+        if(req.body.nama && req.body.tempatlahir && req.body.tgllahir && req.body.nohp &&
 req.body.tower && req.body.unit && req.body.status && req.body.periodsewa && req.body.agen &&
 req.body.emergencyhp && req.body.pemilikunit) {
-      let resultnya = await Checkpenghunidb.checkpenghunidb(req.body.name && req.body.tempatlahir 
-&& req.body.tgllahir && req.body.nohp &&
-req.body.tower && req.body.unit && req.body.status && req.body.periodsewa && req.body.agen &&
-req.body.emergencyhp && req.body.pemilikuni);
+      let resultnya = await Checkpenghunidb.checkpenghunidb(req.body.nama, req.body.tempatlahir 
+, req.body.tgllahir , req.body.nohp ,
+req.body.tower , req.body.unit , req.body.status , req.body.periodsewa , req.body.agen ,
+req.body.emergencyhp , req.body.pemilikunit);
+            console.log("dalam isidata");
          if(resultnya === "notfind"){
-            let resultnya2 = await Insertpenghunidb.insertpenghunidb(req.body.name &&
- req.body.tempatlahir  && req.body.tgllahir && req.body.nohp &&
-req.body.tower && req.body.unit && req.body.status && req.body.periodsewa && req.body.agen &&
-req.body.emergencyhp && req.body.pemilikuni);
+            let resultnya2 = await Insertpenghunidb.insertpenghunidb(req.body.nama ,
+ req.body.tempatlahir  , req.body.tgllahir , req.body.nohp ,
+req.body.tower , req.body.unit , req.body.status , req.body.periodsewa , req.body.agen ,
+req.body.emergencyhp , req.body.pemilikunit);
              if(resultnya2 === "1inserted"){
                  res.send({answer: "ok"});
            }
+       else {
+          res.send({kosong: ""});
+       }
        }
   }
+});
+
+app.use('/caridatanama', async function(req, res) {
+  if(req.body.nama && req.body.lowlimit && req.body.highlimit){
+             console.log(req.body.lowlimit);
+        let resultnya = await Fetchallpenghuninamadb.fetchallpenghuninamadb(req.body.nama, Number(req.body.lowlimit), Number(req.body.highlimit));
+          console.log(resultnya);
+        if(resultnya){
+      res.send({answer: resultnya});    
+ }
+       else {
+          res.send({kosong: ""});
+       }
+}  
+});
+
+
+app.use('/caridataunit', async function(req, res) {
+  if(req.body.tower && req.body.unit && req.body.lowlimit && req.body.highlimit){
+        let resultnya = await Fetchallpenghuniunitdb.fetchallpenghuniunitdb(req.body.tower, req.body.unit, Number(req.body.lowlimit),
+Number(req.body.highlimit));
+          console.log(resultnya);
+        if(resultnya){
+      res.send({answer: resultnya});    
+ }
+       else {
+          res.send({kosong: ""});
+       }
+}  
+});
+
+app.use('/action', async function(req, res) {
+        if(req.body.nama && req.body.tempatlahir && req.body.tgllahir && req.body.nohp &&
+req.body.tower && req.body.unit && req.body.status && req.body.periodsewa && req.body.agen &&
+req.body.emergencyhp && req.body.pemilikunit) {
+      let resultnya = await Deletepenghunidb.deletepenghunidb(req.body.nama, req.body.tempatlahir 
+, req.body.tgllahir , req.body.nohp ,
+req.body.tower , req.body.unit , req.body.status , req.body.periodsewa , req.body.agen ,
+req.body.emergencyhp , req.body.pemilikunit);
+         if(resultnya === "1deleted"){
+           res.send({answer: "ok"});
+}
+       else {
+          res.send({kosong: ""});
+       }
+}
+});
+
+app.use('/updatedata', async function(req, res) {
+        if(req.body.oldnama && req.body.oldtempatlahir && req.body.oldtgllahir && req.body.oldnohp &&
+req.body.oldtower && req.body.oldunit && req.body.oldstatus && req.body.oldperiodsewa && req.body.oldagen &&
+req.body.oldemergencyhp && req.body.oldpemilikunit && req.body.nama && req.body.tempatlahir && req.body.tgllahir && req.body.nohp &&
+req.body.tower && req.body.unit && req.body.status && req.body.periodsewa && req.body.agen &&
+req.body.emergencyhp && req.body.pemilikunit) {
+      let resultnya = await Updatepenghunidb.updatepenghunidb(req.body.oldnama, req.body.oldtempatlahir 
+, req.body.oldtgllahir , req.body.oldnohp ,
+req.body.oldtower , req.body.oldunit , req.body.oldstatus , req.body.oldperiodsewa , req.body.oldagen ,
+req.body.oldemergencyhp , req.body.oldpemilikunit, req.body.nama, req.body.tempatlahir 
+, req.body.tgllahir , req.body.nohp ,
+req.body.tower , req.body.unit , req.body.status , req.body.periodsewa , req.body.agen ,
+req.body.emergencyhp , req.body.pemilikunit);
+  if(resultnya === "1updated"){
+           res.send({answer: "ok"});
+     console.log(resultnya);
+}       
+       else {
+          res.send({kosong: ""});
+       } 
+}
 });
 
 
