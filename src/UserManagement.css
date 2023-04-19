@@ -3,10 +3,11 @@
   flex-direction: column;
   align-self: center;
   justify-content: top;
+  align-items: center;
   background-color: white;
+  border-radius: 2vh;
   width: 96vw;
-  height: 82vh;
-  border: 1px solid blue;
+  height: 80vh;
 }
 
 
@@ -15,11 +16,10 @@
   flex-direction: column;
   align-self: center;
   background-color: white;
-  justify-content: top;
+  justify-content: center;
   align-self: center;
   width: 94vw;
-  height: auto;
-  border: 1px solid green;
+  height: 14vh;
 }
 
 
@@ -27,15 +27,14 @@
  display: flex;
  align-self: center;
  flex-direction: row;
+ width: 90vw;
  gap: 0.6vw;
- width: 92vw;
  height: auto;
  background-color: #ebebfa; 
  padding: 1%;
  justify-content: center;
  align-items: center;
  border-radius: 6px;
-  border: 1px solid yellow;
 }
 
 .filtertextdiv {
@@ -43,35 +42,31 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  width: 83vw;
+  width: 84vw;
   height: fit-content;
   padding: 0.05%;
   background-color: white;
   border: 1px black solid;
   border-radius: 6px;
-  border: 1px solid purple;
 }
 
 .searchbutton {
   align-self: left;
   border: none;
   background-color: white;
-  border: 1px solid red;
 }
 
 
 .filterinputtext{
- width: 87vw;
+ width: 80vw;
  border: none;
  outline: none;
-  border: 1px solid red;
 }
 
 .filterbuttondiv {
   display: block;
   width: fit-content;
   height: fit-content;
-  border: 1px solid red;
 }
 
 
@@ -85,14 +80,12 @@
  justify-content: center;
  align-items: center;
  align-self: center;
-  border: 1px solid red;
 }
 
 .filterinputbutton {
  border-radius: 6px;
  backgound-color: white;
  color: #00004d;
-  border: 1px solid red;
 }
 
 .filterspan {
@@ -110,34 +103,30 @@
   align-items: center;
   background-color: white;
   border-radius: 5px;
-  border: 1px solid brown;
 }
 
 .countertextdiv {
   display: block;
   margin-left: 2vw;
-  border: 1px solid red;
 }
 
 .countertextspan {
   font-family: serif;
   font-size: 1vw;
   white-space: nowrap;
-  border: 1px solid red;
 }
 
 
 .textselectpagediv{
  display: flex;
   flex-direction: row;
-  gap: 1vw;
+  
   width: 12vw;
   height: 4vh;;
   align-self: center;
   justify-content: center;
   align-items: center;
   background-color: white;
-  border: 1px solid red;
 }
 
 .arrowleftdiv {
@@ -145,8 +134,7 @@
   flex-direction: row;
   justify-content: center;
  align-self: center;
-  width: 3vw;
-  border: 1px solid red;
+  width: 1.8vw;
 }
 
 
@@ -155,8 +143,7 @@
   flex-direction: row;
   justify-content: center;
   align-self: center;
-  width: 3vw;
-  border: 1px solid red;
+  width: 1.8vw;
 }
 
 .Filterpagehid {
@@ -165,11 +152,9 @@
 
 .Filterpageshow {
   display: flex;
-  flex-direction: column;
-  justify-content: top;
-  align-items: left;
+  flex-direction: rows;
+  justify-content: left;
+  align-items: center;
   width: 25vw;
-  height: 12vh;
-  z-index: 20;
-  border: 1px solid red;
+  height: 3vh;
 }

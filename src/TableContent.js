@@ -12,10 +12,12 @@ let newlistrow = [];
 for(let a = 0; a < props.dataget.length; a++){
            console.log(props.dataget[a]);
        if((a % 2 === 0) || (a === 0)){
-           newlistrow.push(<Listroweven key={a} dataeven = {props.dataget[a]} />);
+              let tampilkeno = a + 1;
+           newlistrow.push(<Listroweven key={a} nonya={tampilkeno} dataeven = {props.dataget[a]} />);
     }
       else {
-        newlistrow.push(<Listrowodd key={a} dataodd = {props.dataget[a]} />);
+        let tampilkeno = a + 1;
+      newlistrow.push(<Listrowodd key={a} nonya={tampilkeno} dataodd = {props.dataget[a]} />);
 }
 }
 
@@ -44,7 +46,7 @@ return(
                          </div></div>
 
                 <div  className="div-table-colfirst6">
-                    <div className="colfirst6textspan">Tower
+                    <div className="colfirst6textspan">Twr
                          </div></div>
                 <div  className="div-table-colfirst7">
                     <div className="colfirst7textspan">Unit
@@ -55,21 +57,17 @@ return(
                          </div></div>
 
                 <div  className="div-table-colfirst9">
-                    <div className="colfirst9textspan">Period Sewa
+                    <div className="colfirst10textspan">Agen
                          </div></div>
 
                 <div  className="div-table-colfirst10">
-                    <div className="colfirst10textspan">Agent
-                         </div></div>
-
-                <div  className="div-table-colfirst11">
                     <div className="colfirst11textspan">Emergency hp
                          </div></div>
 
-                <div  className="div-table-colfirst12">
+                <div  className="div-table-colfirst11">
                     <div className="colfirst12textspan">Pemilik unit
                          </div></div>
-                <div  className="div-table-colfirst6">
+                <div  className="div-table-colfirst12">
                      <div className="colfirst6textspan">Action
                         </div></div>
              </div>

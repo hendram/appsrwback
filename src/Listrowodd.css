@@ -2,10 +2,11 @@
 .div-table-rowodd {
   display: flex;
   flex-direction: row;
-  width: 67vw;
+  width: 95vw;
   height: fit-content;
   background-color: white;
    padding-top: 0.6vh;
+ background-color: #ebebfa;
   padding-bottom: 0.6vh;
   padding-left: 0.6vw;
   padding-right: 0.6vw;
@@ -18,7 +19,7 @@
   display: block;         
   width: 3vw;
   text-align: left;         
-  background-color: white;  
+ background-color: #ebebfa;
 }
 
 .colodd1textspan{
@@ -29,9 +30,9 @@
 
 .div-table-colodd2 {
   display: block;         
-  width: 15vw;
+  width: 10vw;
   text-align: left;         
-  background-color: white;
+  background-color: #ebebfa;
   
 }
 
@@ -43,9 +44,9 @@ font-size: 1vw;
 
 .div-table-colodd3 {
   display: block;         
-  width: 12vw;
+  width: 9vw;
   text-align: left;         
-  background-color: white;  
+  background-color: #ebebfa;
 }
 
 .colodd3textspan{  
@@ -56,9 +57,9 @@ font-size: 1vw;
 
 .div-table-colodd4 {
   display: block;         
-  width: 9.5vw;
+  width: 10vw;
   text-align: left;         
-  background-color: white;  
+  background-color: #ebebfa;
 }
 
 .colodd4textspan{  
@@ -69,9 +70,9 @@ font-size: 1vw;
 
 .div-table-colodd5 {
   display: block;         
-  width: 19vw;
+  width: 12vw;
   text-align: left;         
-  background-color: white;  
+  background-color: #ebebfa;  
 }
 
 .colodd5textspan{  
@@ -83,9 +84,9 @@ font-size: 1vw;
 
 .div-table-colodd6 {
   display: block;         
-  width: 19vw;
+  width: 3vw;
   text-align: left;         
-  background-color: white;  
+  background-color: #ebebfa;  
 }
 
 .colodd6textspan{  
@@ -97,9 +98,9 @@ font-size: 1vw;
 
 .div-table-colodd7 {
   display: block;         
-  width: 19vw;
+  width: 5vw;
   text-align: left;         
-  background-color: white;  
+  background-color: #ebebfa;  
 }
 
 .colodd7textspan{  
@@ -111,9 +112,9 @@ font-size: 1vw;
 
 .div-table-colodd8 {
   display: block;         
-  width: 19vw;
+  width: 6vw;
   text-align: left;         
-  background-color: white;  
+  background-color: #ebebfa;  
 }
 
 .colodd8textspan{  
@@ -122,26 +123,11 @@ font-size: 1vw;
  white-space: nowrap;
 }
 
-
 .div-table-colodd9 {
   display: block;         
-  width: 19vw;
+  width: 5vw;
   text-align: left;         
-  background-color: white;  
-}
-
-.colodd9textspan{  
- font-family: serif;
-font-size: 1vw;
- white-space: nowrap;
-}
-
-
-.div-table-colodd10 {
-  display: block;         
-  width: 19vw;
-  text-align: left;         
-  background-color: white;  
+  background-color: #ebebfa;  
 }
 
 .colodd10textspan{  
@@ -151,16 +137,30 @@ font-size: 1vw;
 }
 
 
-.div-table-colodd11 {
+.div-table-colodd10 {
   display: block;         
-  width: 19vw;
+  width: 12vw;
   text-align: left;         
-  background-color: white;  
+  background-color: #ebebfa;  
 }
 
 .colodd11textspan{  
  font-family: serif;
 font-size: 1vw;
+ white-space: nowrap;
+}
+
+
+.div-table-colodd11 {
+  display: block;         
+  width: 10vw;
+  text-align: left;         
+  background-color: #ebebfa;  
+}
+
+.colodd11textspan{  
+ font-family: serif;
+ font-size: 1vw;
  white-space: nowrap;
 }
 

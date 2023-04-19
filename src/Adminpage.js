@@ -49,7 +49,8 @@ const handleSubmitoperator = async(event) => {
 return(
 <div className="Inviteoperator">
 <div className="Generatetokenoperatordiv">
-<button onClick={(e) => handleClicktokenoperator(e)} className="Generatetokoperatorbut">Generate Token</button>
+<button onClick={(e) => handleClicktokenoperator(e)} className="Generatetokenoperatorbut">
+Generate Token</button>
 <span>{resultrandomoperator.current}</span>
 </div>
 <div className="Operatornameadmdiv">

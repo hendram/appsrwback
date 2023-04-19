@@ -1,3 +1,13 @@
+.Dataprocessdiv{
+ display: flex;
+ flex-direction: column;
+ justify-content: center;
+ align-items: center;
+ width: 100vw;
+ height: 100vh;
+
+}
+
 .Topframe {
  display: flex;
  flex-direction: rows;
@@ -5,7 +15,7 @@
  align-items: center;
  width: 100vw;
  height: 6vh;
- border: 1px red solid;
+ 
 }
 
 .Caridata3{
@@ -56,11 +66,13 @@
  flex-direction: column;
  justify-content: center;
  align-items: center;
+ border-top-left-radius: 2vh;
+  border-top-right-radius: 2vh;
  width: 100vw;
- height: 95vh;
- border: 1px red solid;
+ height: 93vh;
+ background-color: #ebebfa;
+ margin-top: -1.15vh; 
  z-index: 50;
- margin-top: -1vh; 
 }
 
 .Searchshow {

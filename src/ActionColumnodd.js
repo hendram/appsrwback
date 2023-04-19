@@ -43,7 +43,7 @@ const handleDelete = async (event) => {
 return(
 <div className="editdeletediv">
 <div className="editbuttondiv">
-<button onClick={handleEdit} className="editbutton">Edit</button>
+<button onClick={handleEdit} className="editbutton">Update</button>
 </div>
 <div className="deletebuttondiv">
 <button onClick={handleDelete} className="deletebutton">Delete</button>

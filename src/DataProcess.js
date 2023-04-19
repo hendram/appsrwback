@@ -14,6 +14,9 @@ const [viewcomp, setViewcomp] = useState({search: "Searchshow", inputdata: "Inpu
    updatedata: "Updatedatahid" }); 
 const [menu, setMenu] = useState({caridata: "Caridata3", isidata: "Isidata2",
   updatedata: "Updatedata1" });
+const [activetab, setActivetab] = useState({caridata: "#ebebfa" , isidata: "#00004d", updatedata: "#00004d"});
+const [activecolor, setActivecolor] = useState({caridatatxtcolor: "black", isidatatxtcolor: "white",
+updatedatatxtcolor: "white" });
 
 const handleSearchclick = (event) => {
   event.stopPropagation();
@@ -23,8 +26,13 @@ const handleSearchclick = (event) => {
    updatedata: "Updatedatahid" };
    let newmenu = {caridata: "Caridata3", isidata: "Isidata2",
   updatedata: "Updatedata1" }
+    let newactivetab = {caridata: "#ebebfa" , isidata: "#00004d", updatedata: "#00004d"};
+    let newactivecolor = {caridatatxtcolor: "black", isidatatxtcolor: "white",
+updatedatatxtcolor: "white"};
      setViewcomp(newviewcomp);
      setMenu(newmenu);
+     setActivetab(newactivetab);
+     setActivecolor(newactivecolor);
 }
 
 
@@ -37,8 +45,13 @@ console.log("fuck");
    updatedata: "Updatedatahid" };
    let newmenu = {caridata: "Caridata2", isidata: "Isidata3",
   updatedata: "Updatedata1" }
+    let newactivetab = {caridata: "#00004d" , isidata: "#ebebfa", updatedata: "#00004d"};
+    let newactivecolor = {caridatatxtcolor: "white", isidatatxtcolor: "black",
+updatedatatxtcolor: "white"};
      setViewcomp(newviewcomp);
      setMenu(newmenu);
+     setActivetab(newactivetab);
+     setActivecolor(newactivecolor);
 }
 
 
@@ -50,9 +63,14 @@ const handleUpdateclick = (event) => {
    updatedata: "Updatedatashow" };
    let newmenu = {caridata: "Caridata1", isidata: "Isidata2",
   updatedata: "Updatedata3" }
+    let newactivetab = {caridata: "$00004d" , isidata: "$00004d", updatedata: "#ebebfa"};
+    let newactivecolor = {caridatatxtcolor: "white", isidatatxtcolor: "white",
+updatedatatxtcolor: "black"};
 
      setViewcomp(newviewcomp);
      setMenu(newmenu);
+     setActivetab(newactivetab);
+     setActivecolor(newactivecolor);
 }
 
 const toUpdatedata = () => {
@@ -61,9 +79,14 @@ const toUpdatedata = () => {
    updatedata: "Updatedatashow" };
    let newmenu = {caridata: "Caridata1", isidata: "Isidata2",
   updatedata: "Updatedata3" }
+    let newactivetab = {caridata: "$00004d" , isidata: "$00004d", updatedata: "#ebebfa"};
+    let newactivecolor = {caridatatxtcolor: "white", isidatatxtcolor: "white",
+updatedatatxtcolor: "black"};
 
      setViewcomp(newviewcomp);
      setMenu(newmenu);
+     setActivetab(newactivetab);
+     setActivecolor(newactivecolor);
 }
 
 
@@ -71,16 +94,19 @@ const b: AppContext2 = {toUpdatedata};
 const d: AppContext4 = {toUpdatedata};
 
 return(
-<div>
+<div className="Dataprocessdiv">
 <div className="Topframe">
 <div className={menu.caridata} onClick={(e) => handleSearchclick(e)} >
-<Tabline text={"Caridata"} locx={"35 0 50 35"}  />
+<Tabline text={"Caridata"} locx={"35 0 50 35"} activetab={activetab.caridata}
+activecolor={activecolor.caridatatxtcolor} />
 </div>
 <div  className={menu.isidata} onClick={(e) => handleInputclick(e)} >
-<Tabline text={"Isidata"}  locx={"35 0 50 35"} />
+<Tabline text={"Isidata"}  locx={"35 0 50 35"}  activetab={activetab.isidata} 
+activecolor={activecolor.isidatatxtcolor}/>
 </div>
 <div  className={menu.updatedata} onClick={(e) => handleUpdateclick(e)} >
-<Tabline text={"Updatedata"}  locx={"35 0 50 35"} />
+<Tabline text={"Updatedata"}  locx={"35 0 50 35"}  activetab={activetab.updatedata} 
+activecolor={activecolor.updatedatatxtcolor} />
 </div>
 </div> {/* closing for Topframe */}
 <div className="Bottomframe">

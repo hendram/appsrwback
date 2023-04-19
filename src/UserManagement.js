@@ -6,6 +6,7 @@ import Filter from './images/Filter';
 import Arrowleft from './images/Arrowleft';
 import Arrowright from './images/Arrowright';
 import Emitter3 from './Emitter';
+import MenuBar from './MenuBar';
 
 export const MainContext1 = React.createContext(null);
 export const MainContext3 = React.createContext(null);
@@ -18,6 +19,7 @@ const UserManagement = () => {
   const words = useRef([]);
   const yangdicari = useRef(["nama"]);  
   const lowLimit = useRef(0);
+  const lowLimittampil = useRef(1);
   const highLimit = useRef(10);
 
 const handleChange = (event) => {
@@ -31,7 +33,7 @@ const handleFilter = (event) => {
    setHandlefilter(newHandlefilter);
 }
 
-const filterName = (event) => {
+const filterName = () => {
       if(yangdicari.current.length !== 0) {
           yangdicari.current.length = 0;
        yangdicari.current.push("nama");
@@ -41,7 +43,7 @@ const filterName = (event) => {
 }
 
 
-const filterUnit = (event) => {
+const filterUnit = () => {
       if(yangdicari.current.length !== 0) {
           yangdicari.current.length = 0;
        yangdicari.current.push("unit");
@@ -113,6 +115,7 @@ const callyangdicari = async() => {
 const countDown = () => {
     if(lowLimit.current > 0 && highLimit.current > 10){
         lowLimit.current = lowLimit.current - 10;
+        lowLimittampil.current = lowLimit.current + 1;
         highLimit.current = highLimit.current - 10;
          callyangdicari();
    }   
@@ -122,6 +125,7 @@ const countDown = () => {
 
 const countUp = () => {
         lowLimit.current = lowLimit.current + 10;
+        lowLimittampil.current = lowLimit.current + 1;
         highLimit.current = highLimit.current + 10;
         callyangdicari();
 }
@@ -174,17 +178,20 @@ onKeyDown={handleKeydown}/>
 </button>
 </div>
 </div> {/* closing for filterinput */}
+<div className={handlefilter.filterpage} >
+<MenuBar filterName={filterName} filterUnit={filterUnit}/>
+</div>
+
+</div> {/* closing for innerfiltertable */}
 <MainContext1.Provider value={a}>
 <MainContext3.Provider value={c}>
 <TableContent dataget={dataget}/>
 </MainContext3.Provider>
 </MainContext1.Provider>
-</div> {/* closing for innerfiltertable */}
-
 </div> {/* closing for topouterright */}
 <div className="counterpagediv">
 <div className="countertextdiv">
-<span className="countertextspan">{lowLimit.current} - {highLimit.current}</span>
+<span className="countertextspan">{lowLimittampil.current} - {highLimit.current}</span>
 </div>
 <div className="textselectpagediv">
 <div className="arrowleftdiv" onClick={countDown} >
@@ -195,16 +202,6 @@ onKeyDown={handleKeydown}/>
 </div>
 </div> {/* closing for textselectpagediv */}
 </div> {/* closing for counterpagediv */}
-<div className={handlefilter.filterpage} >
-<div>
-<button onClick={filterName} className="Buttonfiltername" >Nama
-</button>
-</div>
-<div>
-<button onClick={filterUnit} className="Buttonfilterunit" >TowerUnit
-</button>
-</div>
-</div>
 </div>
 )
 }
