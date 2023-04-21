@@ -29,7 +29,7 @@ const opendataprocessf = (truefalse) => {
 
 return(
 <div className="Mostouterdiv">
-<img src={Cover} alt="GreenBay Picture" />
+{/* <img src={Cover} className="Cover-image" alt="GreenBay Picture" /> */}
 <div className={changemainpage.signin}>
 <Signinpage openadminpage={openadminpagef} opendataprocess={opendataprocessf}/>
 </div>
