@@ -50,9 +50,11 @@ const handleSubmit = async (event) => {
 
     nama.current.value = "";
    tempatlahir.current.value = "";
+ date.current.value = "1";
+   month.current.value = "1";
    tgllahir.current.value = "";
    nohp.current.value = "";
-   tower.current.value = "";
+   tower.current.value = "A";
    unit.current.value = "";
    status.current.value = "";
    periodsewa.current.value = "";
@@ -71,9 +73,11 @@ const handleReset = (event) => {
 
     nama.current.value = "";
    tempatlahir.current.value = "";
+   date.current.value = "1";
+   month.current.value = "1";
    tgllahir.current.value = "";
    nohp.current.value = "";
-   tower.current.value = "";
+   tower.current.value = "A";
    unit.current.value = "";
    status.current.value = "";
    periodsewa.current.value = "";
