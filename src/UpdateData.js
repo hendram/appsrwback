@@ -151,7 +151,7 @@ return(
   <span>Tanggal lahir:</span>
    <label htmlFor="Tanggalu"> Tanggal: </label>
 <select id="Tanggalu" ref={date} >
-<option>1</option>
+<option selected>1</option>
 <option>2</option>
 <option>3</option>
 <option>4</option>
@@ -186,7 +186,7 @@ return(
 </select>
    <label htmlFor="Bulanu"> Bulan: </label>
 <select id="Bulanu" ref={month}>
-	<option>1</option>
+	<option selected>1</option>
 <option>2</option>
 <option>3</option>
 <option>4</option>
@@ -216,7 +216,7 @@ return(
 <div className="Towerdiv">
   <label htmlFor="Toweru">Tower:</label>
  <select id="Toweru" ref={tower}>
-        <option>A</option>
+        <option selected>A</option>
 <option>B</option>
 <option>C</option>
 <option>D</option>

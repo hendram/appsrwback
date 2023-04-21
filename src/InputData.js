@@ -103,7 +103,7 @@ return(
   <span>Tanggal lahir:</span>
    <label htmlFor="Tanggal"> Tanggal: </label>
 <select id="Tanggal" ref={date} className="Tanggalselect" >
-<option>1</option>
+<option selected>1</option>
 <option>2</option>
 <option>3</option>
 <option>4</option>
@@ -137,7 +137,7 @@ return(
 </select>
    <label htmlFor="Bulan"> Bulan: </label>
 <select id="Bulan" ref={month} className="Bulanselect">
-	<option>1</option>
+	<option selected>1</option>
 <option>2</option>
 <option>3</option>
 <option>4</option>
@@ -167,7 +167,7 @@ return(
 <div className="Towerdiv">
   <label htmlFor="Tower">Tower:</label>
  <select id="Tower" ref={tower} className="Towerselect">
-        <option>A</option>
+        <option selected>A</option>
 <option>B</option>
 <option>C</option>
 <option>D</option>
