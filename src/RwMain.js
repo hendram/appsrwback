@@ -3,6 +3,7 @@ import './RwMain.css';
 import Signinpage from './Signinpage';
 import Adminpage from './Adminpage';
 import DataProcess from './DataProcess';
+import Cover from './images/cover.jpg';
 
 const RwMain = () => {
 
@@ -28,6 +29,7 @@ const opendataprocessf = (truefalse) => {
 
 return(
 <div className="Mostouterdiv">
+<img src={Cover} alt="GreenBay Picture" />
 <div className={changemainpage.signin}>
 <Signinpage openadminpage={openadminpagef} opendataprocess={opendataprocessf}/>
 </div>

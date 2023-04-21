@@ -2,7 +2,7 @@ import React, {useRef, useEffect} from 'react';
 import Emitter from './Emitter';
 import Emitter2 from './Emitter';
 import Emitter3 from './Emitter';
-import './InputData.css';
+import './UpdateData.css';
 
 const UpdateData = () => {
 
@@ -133,24 +133,24 @@ const handleReset = (event) => {
 
 
 return(
-  <div className="Inputdiv">
+<div className="Updatediv">
 <div className="Namadiv">
-  <span>Nama:</span>
+  <label htmlFor="Namau">Nama:</label>
   <div className="Namainputdiv">
-    <input type="text" ref={nama} className="Namainput" />
+    <input type="text" id="Namau" ref={nama} className="Namainputu" />
   </div>
 </div>
 <div className="Tempattanggallahirdiv">
 <div className="Tempatlahirdiv">
-  <span>Tempat lahir:</span>
+  <label htmlFor="Tempatlahiru">Tempat lahir:</label>
   <div className="Tempatlahirinputdiv">
-    <input type="text" ref={tempatlahir}  className="Tempatlahirinput"/>
+    <input type="text"  id="Tempatlahiru" ref={tempatlahir}  className="Tempatlahirinputu"/>
   </div>
 </div>
 <div className="Tanggallahirdiv">
   <span>Tanggal lahir:</span>
-   <span> Tanggal: </span>
-<select ref={date} >
+   <label htmlFor="Tanggalu"> Tanggal: </label>
+<select id="Tanggalu" ref={date} >
 <option>1</option>
 <option>2</option>
 <option>3</option>
@@ -184,9 +184,9 @@ return(
 <option>31</option>
 <option>31</option>
 </select>
-   <span> Bulan: </span>
-<select ref={month}>
-        <option>1</option>
+   <label htmlFor="Bulanu"> Bulan: </label>
+<select id="Bulanu" ref={month}>
+	<option>1</option>
 <option>2</option>
 <option>3</option>
 <option>4</option>
@@ -199,22 +199,23 @@ return(
 <option>11</option>
 <option>12</option>
 </select>
-   <span> Tahun: </span>
- <div className="Tanggallahirinputdiv" >
-    <input type="text" ref={tgllahir} className="Tanggallahirinput"/>
+   <label htmlFor="Tahunu"> Tahun: </label>
+
+  <div className="Tanggallahirinputdiv" >
+    <input id="Tahunu" type="text" ref={tgllahir} className="Tanggallahirinputu"/>
   </div>
 </div>
 </div> {/* closing of tempattanggallahirdiv */ }
 <div className="Nohptowerunitdiv">
 <div className="Nohpdiv">
-  <span>No hp:</span>
+  <label htmlFor="Nohpu">No hp:</label>
   <div className="Nohpinputdiv">
-    <input type="text" ref={nohp} className="Nohpinput" />
+    <input type="text" id="Nohpu" ref={nohp} className="Nohpinputu" />
   </div>
 </div>
 <div className="Towerdiv">
-  <span>Tower:</span>
- <select ref={tower}>
+  <label htmlFor="Toweru">Tower:</label>
+ <select id="Toweru" ref={tower}>
         <option>A</option>
 <option>B</option>
 <option>C</option>
@@ -231,54 +232,53 @@ return(
 
 </div>
 <div className="Unitdiv">
-  <span>Unit:</span>
+  <label htmlFor="Unitu">Unit:</label>
   <div className="Unitinputdiv">
-    <input type="text" ref={unit} className="Unitinput" />
- </div>
+    <input id="Unitu" type="text" ref={unit} className="Unitinputu" />
+  </div>
 </div>
 </div> {/* closing of nohptowerunitdiv */}
 <div className="Statusperiodsewadiv">
 <div className="Statusdiv">
-  <span>Status:</span>
+  <label htmlFor="Statusu">Status:</label>
   <div className="Statusinputdiv">
-    <input type="text"  ref={status} className="Statusinput"/>
+    <input id="Statusu" type="text"  ref={status} className="Statusinputu"/>
   </div>
 </div>
 <div className="Periodsewadiv">
-  <span>Period Sewa:</span>
+  <label htmlFor="Periodsewau">Period Sewa:</label>
   <div className="Periodsewainputdiv">
-    <input type="text" ref={periodsewa} className="Periodsewainput"/>
+    <input type="text" id="Periodsewau" ref={periodsewa} className="Periodsewainputu"/>
   </div>
 </div>
 </div> {/* closing of statusperiodsewadiv */}
    <div className="Agendiv">
-   <span>Agen:</span>
+   <label htmlFor="Agenu">Agen:</label>
   <div className="Ageninputdiv">
-   <input type="text" ref={agen} className="Ageninput"/>
+   <input id="Agenu" type="text" ref={agen} className="Ageninputu"/>
 </div>    
 </div>
 <div className="Emergencyhpdiv">
- <span>Emergency hp:</span>
+ <label htmlFor="Emergencyhpu"> Emergency hp:</label>
 <div className="Emergencyhpinputdiv">   
-<input type="text" ref={emergencyhp} className="Emergencyhpinput" />
+<input id="Emergencyhpu" type="text" ref={emergencyhp} className="Emergencyhpinputu" />
 </div>   
  </div>
   <div className="Pemilikunitdiv">
- <span>Pemilik Unit:</span>
+ <label htmlFor="Pemilikunitu">Pemilik Unit:</label>
 <div className="Pemilikunitinputdiv">  
- <input type="text" ref={pemilikunit}  className="Pemilikunitinput"/>
+ <input id="Pemilikunitu" type="text" ref={pemilikunit}  className="Pemilikunitinputu"/>
 </div>   
  </div>
 <div className="Submitresetdiv">
-<button className="Submitbutton" onClick={(e) => handleUpdate(e)} >
-<span>Update</span>
+<button id="Update" className="Updatebutton" onClick={(e) => handleUpdate(e)} >
+<label htmlFor="Update">Update</label>
 </button>
-<button className="Resetbutton" onClick={(e) => handleReset(e)} >
-<span>Reset</span>
+<button id="Resetu" className="Resetbuttonu" onClick={(e) => handleReset(e)} >
+<label htmlFor="Resetu">Reset</label>
 </button>
 </div>
 </div>
-
 );
 }
 

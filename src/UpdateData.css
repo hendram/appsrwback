@@ -1,4 +1,4 @@
-.Inputdiv {
+.Updatediv {
  display: flex;
  flex-direction: column;
  gap: 4vh; 
@@ -31,7 +31,7 @@ justify-content: center;
  border: 1px black solid;
 }
 
-.Namainput {
+.Namainputu {
  width: 48vw;
  height: 3vh;
  border: none;
@@ -71,7 +71,7 @@ justify-content: center;
  border: 1px black solid;
 }
 
-.Tempatlahirinput {
+.Tempatlahirinputu {
  width: 40vw;
  height: 3vh;
  border: none;
@@ -101,7 +101,7 @@ border-radius: 2vh;
  border: 1px black solid;
 }
 
-.Tanggallahirinput {
+.Tanggallahirinputu {
  width: 4vw;
  height: 3vh;
  border: none;
@@ -141,7 +141,7 @@ border-radius: 2vh;
  border: 1px black solid;
 }
 
-.Nohpinput {
+.Nohpinputu {
  width: 16vw;
  height: 3vh;
  border: none;
@@ -171,7 +171,7 @@ border-radius: 2vh;
  border: 1px black solid;
 }
 
-.Towerinput {
+.Towerinputu {
  width: 1vw;
  height: 3vh;
  border: none;
@@ -201,7 +201,7 @@ border-radius: 2vh;
  border: 1px black solid;
 }
 
-.Unitinput{
+.Unitinputu{
 width: 4vw;
  height: 3vh;
  outline: none;
@@ -241,7 +241,7 @@ border-radius: 2vh;
  border: 1px black solid;
 }
 
-.Statusinput {
+.Statusinputu {
 width: 10vw;
  height: 3vh;
  border: none;
@@ -271,7 +271,7 @@ width: 10vw;
  border: 1px black solid;
 }
 
-.Periodsewainput{
+.Periodsewainputu{
  width: 50vw;
  height: 3vh;
  border: none;
@@ -301,7 +301,7 @@ width: 10vw;
  border: 1px black solid;
 }
 
-.Ageninput{
+.Ageninputu{
   width: 50vw;
  height: 3vh;
 border: none;
@@ -331,7 +331,7 @@ border: none;
  border: 1px black solid;
 }
 
-.Emergencyhpinput {
+.Emergencyhpinputu {
  width: 16vw;
  height: 3vh;
  border: none;
@@ -361,7 +361,7 @@ border: none;
  border: 1px black solid;
 }
 
-.Pemilikunitinput {
+.Pemilikunitinputu {
  width: 50vw;
  height: 3vh;
  border: none;
@@ -378,11 +378,11 @@ display:flex;
  height: 4vh;
 }
 
-.Submitbutton  {
+.Updatebutton {
  border-radius: 2vh;
 }
 
-.Resetbutton {
+.Resetbuttonu {
  border-radius: 2vh;
 }
 

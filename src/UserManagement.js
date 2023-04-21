@@ -20,7 +20,7 @@ const UserManagement = () => {
   const yangdicari = useRef(["nama"]);  
   const lowLimit = useRef(0);
   const lowLimittampil = useRef(1);
-  const highLimit = useRef(10);
+  const highLimit = useRef(14);
 
 const handleChange = (event) => {
 
@@ -113,10 +113,10 @@ const callyangdicari = async() => {
 }
 
 const countDown = () => {
-    if(lowLimit.current > 0 && highLimit.current > 10){
-        lowLimit.current = lowLimit.current - 10;
+    if(lowLimit.current > 0 && highLimit.current > 14){
+        lowLimit.current = lowLimit.current - 14;
         lowLimittampil.current = lowLimit.current + 1;
-        highLimit.current = highLimit.current - 10;
+        highLimit.current = highLimit.current - 14;
          callyangdicari();
    }   
 
@@ -124,9 +124,9 @@ const countDown = () => {
 
 
 const countUp = () => {
-        lowLimit.current = lowLimit.current + 10;
+        lowLimit.current = lowLimit.current + 14;
         lowLimittampil.current = lowLimit.current + 1;
-        highLimit.current = highLimit.current + 10;
+        highLimit.current = highLimit.current + 14;
         callyangdicari();
 }
 
@@ -185,7 +185,7 @@ onKeyDown={handleKeydown}/>
 </div> {/* closing for innerfiltertable */}
 <MainContext1.Provider value={a}>
 <MainContext3.Provider value={c}>
-<TableContent dataget={dataget}/>
+<TableContent dataget={dataget} limitbawah={lowLimittampil.current}/>
 </MainContext3.Provider>
 </MainContext1.Provider>
 </div> {/* closing for topouterright */}

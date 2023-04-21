@@ -11,12 +11,21 @@ useEffect(() =>  {
 let newlistrow = [];
 for(let a = 0; a < props.dataget.length; a++){
            console.log(props.dataget[a]);
-       if((a % 2 === 0) || (a === 0)){
-              let tampilkeno = a + 1;
-           newlistrow.push(<Listroweven key={a} nonya={tampilkeno} dataeven = {props.dataget[a]} />);
+           
+   if((a % 2 === 0) || (a === 0)){
+              let tampilkeno;
+               if(a === 0){
+               
+              tampilkeno = props.limitbawah;
+            }
+           else{
+              tampilkeno = a + props.limitbawah;
+             }
+                            
+    newlistrow.push(<Listroweven key={a} nonya={tampilkeno} dataeven = {props.dataget[a]} />);
     }
       else {
-        let tampilkeno = a + 1;
+        let tampilkeno = a + props.limitbawah;
       newlistrow.push(<Listrowodd key={a} nonya={tampilkeno} dataodd = {props.dataget[a]} />);
 }
 }
