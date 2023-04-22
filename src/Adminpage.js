@@ -43,10 +43,48 @@ const handleSubmitoperator = async(event) => {
 }
 });
 }
-} 
+}
+
+const handleBackup = async (event) => {
+   forbuttonclick(event);
+
+        let backupdata = {backup: "ok"};
+
+       await fetch("https://localhost/backupdb", {
+               method: "POST",
+               headers: { 'Content-Type': 'application/json' },
+               body: JSON.stringify(backupdata)
+}).then((response) =>  response.json()
+       ).then(function(data){
+        if(data.answer === "ok"){
+   // let see what need to do
+}
+});
+}
+
+
+const handleRestore = async (event) => {
+   forbuttonclick(event);
+
+   let restoredata = {restore: "ok"}
+
+       await fetch("https://localhost/restoredb", {
+               method: "POST",
+               headers: { 'Content-Type': 'application/json' },
+               body: JSON.stringify(restoredata)
+}).then((response) =>  response.json()
+       ).then(function(data){
+        if(data.answer === "ok"){
+       // let see what need to do 
+}
+});
+}
+
+ 
 
 
 return(
+<div className="Adminpagediv">
 <div className="Inviteoperator">
 <div className="Generatetokenoperatordiv">
 <button onClick={(e) => handleClicktokenoperator(e)} className="Generatetokenoperatorbut">
@@ -63,7 +101,16 @@ Generate Token</button>
 <button onClick={(e) => handleSubmitoperator(e)} className="Submitoperator">Submit</button>
 <span>{success.current}</span>
 </div>
-</div> 
+</div> {/* closing for Inviteoperator */}
+<div className="Backuprestorediv">
+<div className="Backupbuttondiv">
+<button onClick={(e) => handleBackup(e)} className="Backupbutton">Backup</button>
+</div>
+<div className="Restorebuttondiv">
+<button onClick={(e) => handleRestore(e)} className="Restorebutton">Restore</button>
+</div>
+</div>
+</div>
 );
 }
 

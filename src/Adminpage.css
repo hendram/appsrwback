@@ -1,3 +1,15 @@
+.Adminpagediv {
+ display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2vw;
+  width: 100vw;
+  height: 100vh;
+  background-color: #ebebfa;
+  color: black;
+}
+
 .Inviteoperator{
  display: flex;
   flex-direction: row;
@@ -5,7 +17,7 @@
   align-items: center;
   gap: 2vw;
   width: 100vw;
-  height: 100vh;
+  height: 50vh;
   background-color: #ebebfa;
   color: black;
 }
@@ -79,6 +91,29 @@ border: none;
   color: black;
 }
 
-.Submitoperator {
+.Submitoperator, .Backupbutton, .Restorebutton {
   border-radius: 2vh;
 }
+
+.Backuprestorediv {
+ display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 2vw;
+  width: 100vw;
+  height: 50vh;
+  background-color: #ebebfa;
+  color: black;
+}
+
+.Backupbuttondiv, .Restorebuttondiv {
+ display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: fit-content;
+  height: fit-content;
+}
+
+  
