@@ -3,6 +3,7 @@ const http = require("http");
 const express = require("express");
 const app = express();
 const happ = express();
+const { spawn } = require('child_process');
 const fs = require("fs");
 const bodyParser = require("body-parser");
 const Checkpenghunidb = require('./Checkpenghunidb');
@@ -175,6 +176,45 @@ req.body.emergencyhp , req.body.pemilikunit);
 }
 });
 
+app.use('/backupdb', async function(req, res) {
+      if(req.body.backup === "ok") {
+    const spawnvar = spawn('./Backupscript.sh', 
+['']);
+
+spawnvar.on('error', (error) => {
+  console.error(`Failed to start child process: ${error}`);
+});
+
+spawnvar.stderr.on('data', (data) => {
+  console.error(`stderr: ${data}`);
+});
+     spawnvar.on('close', (code) => {
+         console.log(`child process exited with code ${code}`);
+});
+}
+
+});
+
+
+app.use('/restoredb', async function(req, res) {
+      if(req.body.restore === "ok") {
+    const spawnvar = spawn('./Restorescript.sh', 
+['']);
+
+spawnvar.on('error', (error) => {
+  console.error(`Failed to start child process: ${error}`);
+});
+
+spawnvar.stderr.on('data', (data) => {
+  console.error(`stderr: ${data}`);
+});
+     spawnvar.on('close', (code) => {
+         console.log(`child process exited with code ${code}`);
+});
+}
+
+});
+
 
 happ.use('*', function(req, res) {
     res.redirect('https://localhost');
@@ -192,5 +232,3 @@ server.listen(443, '', function(req, res) {
 
 const httpServer = http.createServer(happ);
 httpServer.listen(80);
-
-
