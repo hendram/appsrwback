@@ -1,10 +1,13 @@
-import React, {useRef} from 'react';
+import React, {useRef, useState} from 'react';
 import './Adminpage.css';
 
 const Adminpage = () => {
 
 const [, updateState] = React.useState();
 const forceUpdate = React.useCallback(() => updateState({}), [])
+const [uploadfile, setUploadfile] = useState({open: "Uploadhid" });
+const [file, setFile] = useState();
+
 
 const resultrandomoperator = useRef(null);
 const operatorname = useRef(null);
@@ -45,6 +48,12 @@ const handleSubmitoperator = async(event) => {
 }
 }
 
+const handleFileChange = (event) => {
+    if (event.target.files) {
+      setFile(event.target.files[0]);
+    }
+  };
+
 const handleBackup = async (event) => {
    forbuttonclick(event);
 
@@ -54,31 +63,52 @@ const handleBackup = async (event) => {
                method: "POST",
                headers: { 'Content-Type': 'application/json' },
                body: JSON.stringify(backupdata)
-}).then((response) =>  response.json()
-       ).then(function(data){
-        if(data.answer === "ok"){
-   // let see what need to do
-}
-});
+}).then((response) => response.blob())
+  .then(blob => {
+    const url = window.URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = 'greenbay.zip';
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+  });
 }
 
 
 const handleRestore = async (event) => {
-   forbuttonclick(event);
+    forbuttonclick(event);
+   
+    let newuploadfile = {open: "Uploadshow"};
+     setUploadfile(newuploadfile);
 
-   let restoredata = {restore: "ok"}
+}
+
+
+const handleUpload = async (event) => { 
+    forbuttonclick(event);
+
+  const stream = await file.arrayBuffer();
+    const streamData = new Uint8Array(stream);
 
        await fetch("https://localhost/restoredb", {
-               method: "POST",
-               headers: { 'Content-Type': 'application/json' },
-               body: JSON.stringify(restoredata)
-}).then((response) =>  response.json()
-       ).then(function(data){
-        if(data.answer === "ok"){
-       // let see what need to do 
+      method: 'POST',
+      headers: {
+        'content-type': 'application/octet-stream',
+  //      'content-length': `${file.size}`, // 👈 Headers need to be a string
+      },
+      body: streamData,
+      // 👇 Set headers manually for single file upload
+    })
+      .then((res) => res.json())
+      .then((data) =>
+   
+     setUploadfile({open: "Uploadhid"})
+
+)
+      .catch((err) => console.log(err));
 }
-});
-}
+
 
  
 
@@ -109,6 +139,11 @@ Generate Token</button>
 <div className="Restorebuttondiv">
 <button onClick={(e) => handleRestore(e)} className="Restorebutton">Restore</button>
 </div>
+</div> {/* closing for Backuprestorediv */ }
+<div className={uploadfile.open}>
+<label htmlFor="uploadfile">Please upload your file below:</label>
+<input type="file" id="uploadfile" className="Uploadfileinput" onChange={handleFileChange} />
+<button onClick={(e) => handleUpload(e)} className="Uploadbutton">Upload</button>
 </div>
 </div>
 );
