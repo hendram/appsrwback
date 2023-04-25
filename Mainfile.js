@@ -24,6 +24,8 @@ let newresult = [];
 
 app.use('/', express.static('/home/pinew/appsrw/build'));
 
+app.use(bodyParser.urlencoded({ limit: '500mb', extended: true }))
+
 app.use(bodyParser.json());
 
 app.use('/user', async function(req, res) {
@@ -190,14 +192,46 @@ spawnvar.stderr.on('data', (data) => {
 });
      spawnvar.on('close', (code) => {
          console.log(`child process exited with code ${code}`);
-});
+ 
+  if(code === 0){
+
+
+  res.set('Content-Type', 'application/zip');
+  res.download('/home/pinew/backup/greenbay.zip', err => {
+    if (err) {
+      console.error('Error sending file:', err);
+    } else {
+      // Delete the zip file after it has been sent
+     fs.unlinkSync('/home/pinew/backup/greenbay.zip');
+    }
+  });
 }
+
+});
+
+}
+
 
 });
 
 
 app.use('/restoredb', async function(req, res) {
-      if(req.body.restore === "ok") {
+
+  // Create a writable stream to the desired file location
+  const fileStream = fs.createWriteStream('/home/pinew/backup/greenbay.zip');
+
+  // Write the file data to the writable stream
+  req.on('data',  function(chunk) {
+  fileStream.write(chunk);
+  });
+
+  // Close the writable stream
+  req.on('end', function() {
+  fileStream.end()
+   });
+
+  // Send a response to the client
+
     const spawnvar = spawn('./Restorescript.sh', 
 ['']);
 
@@ -211,7 +245,7 @@ spawnvar.stderr.on('data', (data) => {
      spawnvar.on('close', (code) => {
          console.log(`child process exited with code ${code}`);
 });
-}
+
 
 });
 
