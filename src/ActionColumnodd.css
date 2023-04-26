@@ -24,7 +24,6 @@
 }
 
 .editbutton {
- border-radius: 3px;
  font-size: 1vw;
  border-color: #00004d;
  color: #00004d;
@@ -34,7 +33,6 @@
 }
 
 .deletebutton {
-  border-radius: 3px;
   color: white;
   border-color: #e60000;
   background-color: #e60000;

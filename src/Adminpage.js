@@ -101,11 +101,11 @@ const handleUpload = async (event) => {
       // 👇 Set headers manually for single file upload
     })
       .then((res) => res.json())
-      .then((data) =>
-   
+      .then(function(data) {
+    if(data.answer === "ok"){
      setUploadfile({open: "Uploadhid"})
-
-)
+}
+})
       .catch((err) => console.log(err));
 }
 

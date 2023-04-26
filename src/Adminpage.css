@@ -119,7 +119,7 @@ border: none;
 .Uploadshow {
   display: flex;
   flex-direction: column;
-  z-index: 50;
+  gap: 2vh;
   width: 50%;
   height: 50%;
   transform: (-50%, -50%);
@@ -127,4 +127,31 @@ border: none;
 
 .Uploadhid {
   display: none;
+}
+
+.Uploadfileinput {
+  width: 50vw;
+  border-radius: 2vh;
+  border: 1px solid black;
+  color: black;
+  background-color: white;
+  height: fit-content;
+}
+
+.Uploadfileinput::file-selector-button {
+  border-color: #e60000;
+  background-color: #e60000;
+  font-size: 1vw;
+  color: white;
+  border-radius: 2vh;
+  font-family: serif;
+  margin-right: 2vw;
+  margin-left: 1vw;
+  margin-top: 0.5vh;
+  margin-bottom: 0.5vh;
+}
+
+.Uploadbutton {
+  width: fit-content;
+  border-radius: 2vh;
 }

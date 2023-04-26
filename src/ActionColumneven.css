@@ -24,7 +24,6 @@
 }
 
 .editbuttoneven {
- border-radius: 3px;
  color: #00004d;
  font-size: 1vw;
  border-color: #00004d;
@@ -35,7 +34,6 @@
 }
 
 .deletebuttoneven {
-  border-radius: 3px;
   color: white;
   background-color: #e60000;
   border-color: #e60000;
