@@ -203,6 +203,8 @@ spawnvar.stderr.on('data', (data) => {
     } else {
       // Delete the zip file after it has been sent
      fs.unlinkSync('/home/pinew/backup/greenbay.zip');
+ const spawnvar = spawn('./Removegreenbay.sh', 
+['']);
     }
   });
 }
@@ -244,6 +246,9 @@ spawnvar.stderr.on('data', (data) => {
 });
      spawnvar.on('close', (code) => {
          console.log(`child process exited with code ${code}`);
+ const spawnvar = spawn('./Removeallgreenbay.sh', 
+['']);
+         res.send({answer: "ok"});
 });
 
 
