@@ -39,14 +39,14 @@ const handleSubmit = async (event) => {
 
 
         if(nama.current.value){
-      namanya = nama.current.value;
+      namanya = nama.current.value.trim();
   }
     else {
       namanya = "nil";
     }
 
       if(tempatlahir.current.value){
-         tempatlahirnya = tempatlahir.current.value;
+         tempatlahirnya = tempatlahir.current.value.trim();
       }
      else {
        tempatlahirnya = "nil";
@@ -54,21 +54,21 @@ const handleSubmit = async (event) => {
 
    if(date.current.value && month.current.value && tgllahir.current.value){
       
-tgllahirnya = date.current.value + " - " + month.current.value + " - " + tgllahir.current.value;
+tgllahirnya = date.current.value + " - " + month.current.value + " - " + tgllahir.current.value.trim();
           }
     else {
      tgllahirnya = date.current.value + " - " + month.current.value + " - " + "nil";
    }
 
    if(noktp.current.value) {
-  noktpnya = noktp.current.value;
+  noktpnya = noktp.current.value.trim();
    }
    else {
     noktpnya = "nil";
    }
 
    if(nohp.current.value){
-    nohpnya = nohp.current.value;
+    nohpnya = nohp.current.value.trim();
     }
    else {
      nohpnya = "nil";
@@ -82,42 +82,42 @@ tgllahirnya = date.current.value + " - " + month.current.value + " - " + tgllahi
       }
 
      if(unit.current.value){
-    unitnya = unit.current.value;
+    unitnya = unit.current.value.trim();
    }
    else {
       unitnya = "nil";
     }
 
     if(status.current.value){
- statusnya = status.current.value;
+ statusnya = status.current.value.trim();
     }
    else {
      statusnya = "nil";
    }
 
     if(periodsewa.current.value){
-    periodsewanya = periodsewa.current.value;
+    periodsewanya = periodsewa.current.value.trim();
     }
    else {
      periodsewanya = "nil";
     }
 
    if(agen.current.value) {
-   agennya = agen.current.value;
+   agennya = agen.current.value.trim();
    }
     else {
      agennya = "nil";
     }
 
     if(emergencyhp.current.value) {
-     emergencyhpnya = emergencyhp.current.value;
+     emergencyhpnya = emergencyhp.current.value.trim();
    }
    else {
     emergencyhpnya = "nil";
   }
    
   if(pemilikunit.current.value){
-    pemilikunitnya = pemilikunit.current.value;
+    pemilikunitnya = pemilikunit.current.value.trim();
     }
     else {
      pemilikunitnya = "nil";
