@@ -16,7 +16,7 @@ const Checkoperatordb = require('./Checkoperatordb');
 const Checkoperatorsignindb = require('./Checkoperatorsignindb');
 const Insertoperatordb = require('./Insertoperatordb');
 const Updateoperatordb = require('./Updateoperatordb');
-
+const Deleteoperatordb = require('./Deleteoperatordb');
 
 let adminpass = "no";
 let newresult = [];
@@ -75,11 +75,25 @@ req.body.invite);
               if(resultnya2 === "1inserted"){
                        res.send({answer: "ok"});
     }
-                          }
+   else {
+     res.send({answer: "notok"});
+   }      
+}                    // closing if resultnya
+     else {
+     res.send({answer: "notok"});
+   } 
+}    // closing if reqbodyoperator and reqbodyinvite
+else if(req.body.operatorname){
+     let resultnya = await Deleteoperatordb.deleteoperatordb(req.body.operatorname);
+            if(resultnya === "1deleted"){
+          console.log("dah didelete ini operatornya");
+             res.send({answer: "ok"});
+    }
+}
 else {
    res.send({kosong: ""});
 }
-}
+
 
 
 });
