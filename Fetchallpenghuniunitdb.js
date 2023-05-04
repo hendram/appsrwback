@@ -11,7 +11,7 @@ try {
     const penghunitablename = database.collection('penghuni');
 
     const exists = await penghunitablename.find({ $and: [{tower: tower}, {unit: unit}]}).project({nama: 1, 
-tempatlahir: 1, tgllahir: 1, nohp: 1, tower: 1, unit: 1, status: 1, periodsewa: 1,
+tempatlahir: 1, tgllahir: 1, noktp: 1, nohp: 1, tower: 1, unit: 1, status: 1, periodsewa: 1,
 agen: 1, emergencyhp: 1, pemilikunit: 1}).skip(lowlimit).limit(highlimit).toArray();
 if (exists.length > 0) {
       console.log(`Found ${exists.length} documents for unit=${unit}`);

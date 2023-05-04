@@ -46,7 +46,7 @@ req.body.invite);
 }
 
 else {
-     if(req.body.operatorname === "adminrwgb" && req.body.password === "123456"){
+     if(req.body.operatorname === "Sekretariat_Rw10" && req.body.password === "greenbaypluit"){
         res.send({answer: "usethis"});
          }
       else {
@@ -86,17 +86,17 @@ else {
 
 
 app.use('/isidata', async function(req, res) {
-        if(req.body.nama && req.body.tempatlahir && req.body.tgllahir && req.body.nohp &&
+        if(req.body.nama && req.body.tempatlahir && req.body.tgllahir && req.body.noktp && req.body.nohp &&
 req.body.tower && req.body.unit && req.body.status && req.body.periodsewa && req.body.agen &&
 req.body.emergencyhp && req.body.pemilikunit) {
       let resultnya = await Checkpenghunidb.checkpenghunidb(req.body.nama, req.body.tempatlahir 
-, req.body.tgllahir , req.body.nohp ,
+, req.body.tgllahir , req.body.noktp, req.body.nohp ,
 req.body.tower , req.body.unit , req.body.status , req.body.periodsewa , req.body.agen ,
 req.body.emergencyhp , req.body.pemilikunit);
             console.log("dalam isidata");
          if(resultnya === "notfind"){
             let resultnya2 = await Insertpenghunidb.insertpenghunidb(req.body.nama ,
- req.body.tempatlahir  , req.body.tgllahir , req.body.nohp ,
+ req.body.tempatlahir  , req.body.tgllahir , req.body.noktp, req.body.nohp ,
 req.body.tower , req.body.unit , req.body.status , req.body.periodsewa , req.body.agen ,
 req.body.emergencyhp , req.body.pemilikunit);
              if(resultnya2 === "1inserted"){
@@ -139,11 +139,11 @@ Number(req.body.highlimit));
 });
 
 app.use('/action', async function(req, res) {
-        if(req.body.nama && req.body.tempatlahir && req.body.tgllahir && req.body.nohp &&
+        if(req.body.nama && req.body.tempatlahir && req.body.tgllahir && req.body.noktp && req.body.nohp &&
 req.body.tower && req.body.unit && req.body.status && req.body.periodsewa && req.body.agen &&
 req.body.emergencyhp && req.body.pemilikunit) {
       let resultnya = await Deletepenghunidb.deletepenghunidb(req.body.nama, req.body.tempatlahir 
-, req.body.tgllahir , req.body.nohp ,
+, req.body.tgllahir , req.body.noktp, req.body.nohp ,
 req.body.tower , req.body.unit , req.body.status , req.body.periodsewa , req.body.agen ,
 req.body.emergencyhp , req.body.pemilikunit);
          if(resultnya === "1deleted"){
@@ -156,16 +156,16 @@ req.body.emergencyhp , req.body.pemilikunit);
 });
 
 app.use('/updatedata', async function(req, res) {
-        if(req.body.oldnama && req.body.oldtempatlahir && req.body.oldtgllahir && req.body.oldnohp &&
-req.body.oldtower && req.body.oldunit && req.body.oldstatus && req.body.oldperiodsewa && req.body.oldagen &&
-req.body.oldemergencyhp && req.body.oldpemilikunit && req.body.nama && req.body.tempatlahir && req.body.tgllahir && req.body.nohp &&
+        if(req.body.oldnama && req.body.oldtempatlahir && req.body.oldtgllahir && req.body.oldnoktp && 
+req.body.oldnohp && req.body.oldtower && req.body.oldunit && req.body.oldstatus && req.body.oldperiodsewa && req.body.oldagen &&
+req.body.oldemergencyhp && req.body.oldpemilikunit && req.body.nama && req.body.tempatlahir && req.body.tgllahir && req.body.noktp && req.body.nohp &&
 req.body.tower && req.body.unit && req.body.status && req.body.periodsewa && req.body.agen &&
 req.body.emergencyhp && req.body.pemilikunit) {
       let resultnya = await Updatepenghunidb.updatepenghunidb(req.body.oldnama, req.body.oldtempatlahir 
-, req.body.oldtgllahir , req.body.oldnohp ,
+, req.body.oldtgllahir , req.body.oldnoktp, req.body.oldnohp ,
 req.body.oldtower , req.body.oldunit , req.body.oldstatus , req.body.oldperiodsewa , req.body.oldagen ,
 req.body.oldemergencyhp , req.body.oldpemilikunit, req.body.nama, req.body.tempatlahir 
-, req.body.tgllahir , req.body.nohp ,
+, req.body.tgllahir , req.body.noktp, req.body.nohp ,
 req.body.tower , req.body.unit , req.body.status , req.body.periodsewa , req.body.agen ,
 req.body.emergencyhp , req.body.pemilikunit);
   if(resultnya === "1updated"){
