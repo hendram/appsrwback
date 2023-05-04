@@ -11,7 +11,8 @@ const [file, setFile] = useState();
 
 const resultrandomoperator = useRef(null);
 const operatorname = useRef(null);
-const success = useRef(null);
+const successsubmit = useRef(null);
+const successdelete = useRef(null);
 
 function forbuttonclick(event){
         event.stopPropagation();
@@ -40,13 +41,36 @@ const handleSubmitoperator = async(event) => {
 }).then((response) =>  response.json()
        ).then(function(data){
         if(data.answer === "ok"){
-           success.current = "Success";
-        console.log(success.current);
+           successsubmit.current = "Success";
            forceUpdate(); 
 }
 });
 }
 }
+
+
+const handleDeleteoperator = async(event) => {
+   forbuttonclick(event);
+
+    let namaoperator = operatorname.current.value;
+            if((namaoperator !== "") || (namaoperator !== undefined)){
+    let operatordata = {"operatorname": namaoperator }
+         console.log("masuk ke operatordata");
+
+       await fetch("https://localhost/operator", {
+               method: "POST",
+               headers: { 'Content-Type': 'application/json' },
+               body: JSON.stringify(operatordata)
+}).then((response) =>  response.json()
+       ).then(function(data){
+        if(data.answer === "ok"){
+           successdelete.current = "Success";
+           forceUpdate(); 
+}
+});
+}
+}
+
 
 const handleFileChange = (event) => {
     if (event.target.files) {
@@ -129,7 +153,12 @@ Generate Token</button>
 </div>
 <div className="Submitoperatorbuttondiv">
 <button onClick={(e) => handleSubmitoperator(e)} className="Submitoperator">Submit</button>
-<span>{success.current}</span>
+<span>{successsubmit.current}</span>
+</div>
+
+<div className="Deleteoperatorbuttondiv">
+<button onClick={(e) => handleDeleteoperator(e)} className="Deleteoperator">Delete</button>
+<span>{successdelete.current}</span>
 </div>
 </div> {/* closing for Inviteoperator */}
 <div className="Backuprestorediv">
