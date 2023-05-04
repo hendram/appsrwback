@@ -22,8 +22,8 @@ const handleDelete = async (event) => {
     event.preventDefault();
 
    let dataaction = { "nama": props.actionodd.nama, "tempatlahir": props.actionodd.tempatlahir, 
-"tgllahir": props.actionodd.tgllahir, "nohp": props.actionodd.nohp, "tower": props.actionodd.tower,
-"unit": props.actionodd.unit, "status": props.actionodd.status, "periodsewa": props.actionodd.periodsewa,
+"tgllahir": props.actionodd.tgllahir, "noktp": props.actionodd.noktp, "nohp": props.actionodd.nohp, 
+"tower": props.actionodd.tower, "unit": props.actionodd.unit, "status": props.actionodd.status, "periodsewa": props.actionodd.periodsewa,
 "agen": props.actionodd.agen, "emergencyhp": props.actionodd.emergencyhp, 
 "pemilikunit": props.actionodd.pemilikunit }    
 

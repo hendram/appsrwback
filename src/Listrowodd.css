@@ -2,14 +2,12 @@
 .div-table-rowodd {
   display: flex;
   flex-direction: row;
-  width: 95vw;
+  width: 96vw;
   height: fit-content;
   background-color: white;
    padding-top: 0.6vh;
  background-color: #ebebfa;
   padding-bottom: 0.6vh;
-  padding-left: 0.6vw;
-  padding-right: 0.6vw;
  align-self: center;
   justify-content: flex-start;
   align-items: center;  
@@ -70,7 +68,7 @@ font-size: 1vw;
 
 .div-table-colodd5 {
   display: block;         
-  width: 12vw;
+  width: 10vw;
   text-align: left;         
   background-color: #ebebfa;  
 }
@@ -84,7 +82,7 @@ font-size: 1vw;
 
 .div-table-colodd6 {
   display: block;         
-  width: 3vw;
+  width: 12vw;
   text-align: left;         
   background-color: #ebebfa;  
 }
@@ -98,7 +96,7 @@ font-size: 1vw;
 
 .div-table-colodd7 {
   display: block;         
-  width: 5vw;
+  width: 3vw;
   text-align: left;         
   background-color: #ebebfa;  
 }
@@ -112,7 +110,7 @@ font-size: 1vw;
 
 .div-table-colodd8 {
   display: block;         
-  width: 6vw;
+  width: 5vw;
   text-align: left;         
   background-color: #ebebfa;  
 }
@@ -125,7 +123,7 @@ font-size: 1vw;
 
 .div-table-colodd9 {
   display: block;         
-  width: 5vw;
+  width: 6vw;
   text-align: left;         
   background-color: #ebebfa;  
 }
@@ -139,7 +137,7 @@ font-size: 1vw;
 
 .div-table-colodd10 {
   display: block;         
-  width: 12vw;
+  width: 5vw;
   text-align: left;         
   background-color: #ebebfa;  
 }
@@ -153,7 +151,7 @@ font-size: 1vw;
 
 .div-table-colodd11 {
   display: block;         
-  width: 10vw;
+  width: 12vw;
   text-align: left;         
   background-color: #ebebfa;  
 }

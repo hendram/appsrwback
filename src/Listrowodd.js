@@ -19,22 +19,22 @@ return(
                      <div className="colodd4textspan">{props.dataodd.tgllahir}
                         </div></div>
                 <div className="div-table-colodd5">
-                   <div className="colodd5textspan">{props.dataodd.nohp}
+                   <div className="colodd5textspan">{props.dataodd.noktp}
                      </div></div>
                 <div className="div-table-colodd6">
-                   <div className="colodd6textspan">{props.dataodd.tower}
+                   <div className="colodd6textspan">{props.dataodd.nohp}
                      </div></div>
                 <div className="div-table-colodd7">
-                   <div className="colodd7textspan">{props.dataodd.unit}
+                   <div className="colodd7textspan">{props.dataodd.tower}
                      </div></div>
                 <div className="div-table-colodd8">
-                   <div className="colodd8textspan">{props.dataodd.status}
+                   <div className="colodd8textspan">{props.dataodd.unit}
                      </div></div>
                 <div className="div-table-colodd9">
-                   <div className="colodd10textspan">{props.dataodd.agen}
+                   <div className="colodd9textspan">{props.dataodd.status}
                      </div></div>
                 <div className="div-table-colodd10">
-                   <div className="colodd11textspan">{props.dataodd.emergencyhp}
+                   <div className="colodd10textspan">{props.dataodd.agen}
                      </div></div>
                 <div className="div-table-colodd11">
                    <div className="colodd11textspan">{props.dataodd.pemilikunit}

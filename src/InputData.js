@@ -9,6 +9,7 @@ const InputData = () => {
 const nama = useRef(null);
 const tempatlahir = useRef(null);
 const tgllahir = useRef(null);
+const noktp = useRef(null);
 const nohp = useRef(null);
 const tower = useRef(null);
 const unit = useRef(null);
@@ -23,21 +24,109 @@ const month = useRef(null);
 const handleSubmit = async (event) => {
    event.stopPropagation();
     event.preventDefault();
+   let namanya;
+   let tempatlahirnya;
+   let tgllahirnya;
+   let noktpnya;
+   let nohpnya;
+   let towernya;
+   let unitnya;
+   let statusnya;
+   let periodsewanya;
+   let agennya;
+   let emergencyhpnya;
+   let pemilikunitnya;
 
-   let namanya = nama.current.value;
-   let tempatlahirnya = tempatlahir.current.value;
-   let tgllahirnya = date.current.value + " - " + month.current.value + " - " + tgllahir.current.value;
-   let nohpnya = nohp.current.value;
-   let towernya = tower.current.value;
-   let unitnya = unit.current.value;
-   let statusnya = status.current.value;
-   let periodsewanya = periodsewa.current.value;
-   let agennya = agen.current.value;
-   let emergencyhpnya = emergencyhp.current.value;
-   let pemilikunitnya = pemilikunit.current.value;
+
+        if(nama.current.value){
+      namanya = nama.current.value;
+  }
+    else {
+      namanya = "nil";
+    }
+
+      if(tempatlahir.current.value){
+         tempatlahirnya = tempatlahir.current.value;
+      }
+     else {
+       tempatlahirnya = "nil";
+    }
+
+   if(date.current.value && month.current.value && tgllahir.current.value){
+      
+tgllahirnya = date.current.value + " - " + month.current.value + " - " + tgllahir.current.value;
+          }
+    else {
+     tgllahirnya = date.current.value + " - " + month.current.value + " - " + "nil";
+   }
+
+   if(noktp.current.value) {
+  noktpnya = noktp.current.value;
+   }
+   else {
+    noktpnya = "nil";
+   }
+
+   if(nohp.current.value){
+    nohpnya = nohp.current.value;
+    }
+   else {
+     nohpnya = "nil";
+   }
+
+     if(tower.current.value){
+    towernya = tower.current.value;
+    }
+    else {
+      towernya = tower.current.value;
+      }
+
+     if(unit.current.value){
+    unitnya = unit.current.value;
+   }
+   else {
+      unitnya = "nil";
+    }
+
+    if(status.current.value){
+ statusnya = status.current.value;
+    }
+   else {
+     statusnya = "nil";
+   }
+
+    if(periodsewa.current.value){
+    periodsewanya = periodsewa.current.value;
+    }
+   else {
+     periodsewanya = "nil";
+    }
+
+   if(agen.current.value) {
+   agennya = agen.current.value;
+   }
+    else {
+     agennya = "nil";
+    }
+
+    if(emergencyhp.current.value) {
+     emergencyhpnya = emergencyhp.current.value;
+   }
+   else {
+    emergencyhpnya = "nil";
+  }
+   
+  if(pemilikunit.current.value){
+    pemilikunitnya = pemilikunit.current.value;
+    }
+    else {
+     pemilikunitnya = "nil";
+  }
+
 
    let datainput = { "nama": namanya, "tempatlahir": tempatlahirnya, "tgllahir": tgllahirnya, 
-"nohp": nohpnya, "tower": towernya, "unit": unitnya, "status": statusnya, "periodsewa": periodsewanya,
+"noktp": noktpnya, "nohp": nohpnya, "tower": towernya, "unit": unitnya, "status": statusnya, 
+"periodsewa": periodsewanya,
 "agen": agennya, "emergencyhp": emergencyhpnya, "pemilikunit": pemilikunitnya }
 
   await fetch("https://localhost/isidata", {
@@ -53,6 +142,7 @@ const handleSubmit = async (event) => {
  date.current.value = "1";
    month.current.value = "1";
    tgllahir.current.value = "";
+   noktp.current.value = "";
    nohp.current.value = "";
    tower.current.value = "A";
    unit.current.value = "";
@@ -76,6 +166,7 @@ const handleReset = (event) => {
    date.current.value = "1";
    month.current.value = "1";
    tgllahir.current.value = "";
+   noktp.current.value = "";
    nohp.current.value = "";
    tower.current.value = "A";
    unit.current.value = "";
@@ -161,13 +252,21 @@ return(
   </div>
 </div>
 </div> {/* closing of tempattanggallahirdiv */ }
-<div className="Nohptowerunitdiv">
+<div className="Noktpnohpdiv">
+<div className="Noktpdiv">
+  <label htmlFor="Noktp">No ktp:</label>
+  <div className="Noktpinputdiv">
+    <input type="text" id="Noktp" ref={noktp} className="Noktpinput" />
+  </div>
+</div> 
 <div className="Nohpdiv">
   <label htmlFor="Nohp">No hp:</label>
   <div className="Nohpinputdiv">
     <input type="text" id="Nohp" ref={nohp} className="Nohpinput" />
   </div>
-</div>
+</div> 
+</div> {/* closing of noktpnohpdiv */ }
+<div className="Towerunitdiv">
 <div className="Towerdiv">
   <label htmlFor="Tower">Tower:</label>
  <select id="Tower" ref={tower} className="Towerselect">
@@ -192,7 +291,7 @@ return(
     <input id="Unit" type="text" ref={unit} className="Unitinput" />
   </div>
 </div>
-</div> {/* closing of nohptowerunitdiv */}
+</div> {/* closing for towerunitdiv */}
 <div className="Statusperiodsewadiv">
 <div className="Statusdiv">
   <label htmlFor="Status">Status:</label>

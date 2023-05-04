@@ -22,9 +22,10 @@ const handleDelete = async (event) => {
     event.preventDefault();
 
    let dataaction = { "nama": props.actioneven.nama, "tempatlahir": props.actioneven.tempatlahir, 
-"tgllahir": props.actioneven.tgllahir, "nohp": props.actioneven.nohp, "tower": props.actioneven.tower,
-"unit": props.actioneven.unit, "status": props.actioneven.status, "periodsewa": props.actioneven.periodsewa,
-"agen": props.actioneven.agen, "emergencyhp": props.actioneven.emergencyhp, 
+"tgllahir": props.actioneven.tgllahir, "noktp": props.actioneven.noktp, "nohp": props.actioneven.nohp, 
+"tower": props.actioneven.tower,"unit": props.actioneven.unit, "status": props.actioneven.status,
+ "periodsewa": props.actioneven.periodsewa, "agen": props.actioneven.agen, 
+"emergencyhp": props.actioneven.emergencyhp, 
 "pemilikunit": props.actioneven.pemilikunit }    
 
     await fetch("https://localhost/action", {

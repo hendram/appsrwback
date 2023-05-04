@@ -11,6 +11,7 @@ const temp = useRef();
 const nama = useRef(null);
 const tempatlahir = useRef(null);
 const tgllahir = useRef(null);
+const noktp = useRef(null);
 const nohp = useRef(null);
 const tower = useRef(null);
 const unit = useRef(null);
@@ -38,6 +39,7 @@ useEffect(() => {
   date.current.value = temp.current.tgllahir.split(" - ")[0];
   month.current.value = temp.current.tgllahir.split(" - ")[1];
   tgllahir.current.value = temp.current.tgllahir.split(" - ")[2];
+  noktp.current.value = temp.current.noktp;
   nohp.current.value = temp.current.nohp;
   tower.current.value = temp.current.tower;
   unit.current.value = temp.current.unit;
@@ -63,23 +65,111 @@ const handleUpdate = async (event) => {
    event.stopPropagation();
     event.preventDefault();
 
- let namanya = nama.current.value;
-   let tempatlahirnya = tempatlahir.current.value;
-   let tgllahirnya = date.current.value + " - " + month.current.value + " - " + tgllahir.current.value;
-   let nohpnya = nohp.current.value;
-   let towernya = tower.current.value;
-   let unitnya = unit.current.value;
-   let statusnya = status.current.value;
-   let periodsewanya = periodsewa.current.value;
-   let agennya = agen.current.value;
-   let emergencyhpnya = emergencyhp.current.value;
-   let pemilikunitnya = pemilikunit.current.value;
+  let namanya;
+   let tempatlahirnya;
+   let tgllahirnya;
+   let noktpnya;
+   let nohpnya;
+   let towernya;
+   let unitnya;
+   let statusnya;
+   let periodsewanya;
+   let agennya;
+   let emergencyhpnya;
+   let pemilikunitnya;
+
+
+        if(nama.current.value){
+      namanya = nama.current.value;
+  }
+    else {
+      namanya = "nil";
+    }
+
+      if(tempatlahir.current.value){
+         tempatlahirnya = tempatlahir.current.value;
+      }
+     else {
+       tempatlahirnya = "nil";
+    }
+ if(date.current.value && month.current.value && tgllahir.current.value){
+      
+tgllahirnya = date.current.value + " - " + month.current.value + " - " + tgllahir.current.value;
+          }
+    else {
+     tgllahirnya = date.current.value + " - " + month.current.value + " - " + "nil";
+   }
+
+   if(noktp.current.value) {
+  noktpnya = noktp.current.value;
+   }
+   else {
+    noktpnya = "nil";
+   }
+
+   if(nohp.current.value){
+    nohpnya = nohp.current.value;
+    }
+   else {
+     nohpnya = "nil";
+   }
+
+     if(tower.current.value){
+    towernya = tower.current.value;
+    }
+    else {
+      towernya = tower.current.value;
+      }
+
+     if(unit.current.value){
+    unitnya = unit.current.value;
+   }
+   else {
+  unitnya = "nil";
+    }
+
+    if(status.current.value){
+ statusnya = status.current.value;
+    }
+   else {
+     statusnya = "nil";
+   }
+
+    if(periodsewa.current.value){
+    periodsewanya = periodsewa.current.value;
+    }
+   else {
+     periodsewanya = "nil";
+    }
+
+   if(agen.current.value) {
+   agennya = agen.current.value;
+   }
+    else {
+     agennya = "nil";
+    }
+
+    if(emergencyhp.current.value) {
+     emergencyhpnya = emergencyhp.current.value;
+   }
+   else {
+    emergencyhpnya = "nil";
+  }
+   
+  if(pemilikunit.current.value){
+    pemilikunitnya = pemilikunit.current.value;
+    }
+   else {
+     pemilikunitnya = "nil";
+}
+
 
    let datainput = { "oldnama": temp.current.nama, "oldtempatlahir": temp.current.tempatlahir, "oldtgllahir": temp.current.tgllahir,
-"oldnohp": temp.current.nohp, "oldtower": temp.current.tower, "oldunit": temp.current.unit, "oldstatus": temp.current.status,
+"oldnoktp": temp.current.noktp, "oldnohp": temp.current.nohp, "oldtower": temp.current.tower, 
+"oldunit": temp.current.unit, "oldstatus": temp.current.status,
 "oldperiodsewa": temp.current.periodsewa, "oldagen": temp.current.agen, "oldemergencyhp": temp.current.emergencyhp,
 "oldpemilikunit": temp.current.pemilikunit, 
-"nama": namanya, "tempatlahir": tempatlahirnya, "tgllahir": tgllahirnya, 
+"nama": namanya, "tempatlahir": tempatlahirnya, "tgllahir": tgllahirnya, "noktp": noktpnya,
 "nohp": nohpnya, "tower": towernya, "unit": unitnya, "status": statusnya, "periodsewa": periodsewanya,
 "agen": agennya, "emergencyhp": emergencyhpnya, "pemilikunit": pemilikunitnya }
 
@@ -96,6 +186,7 @@ const handleUpdate = async (event) => {
  date.current.value = "1";
    month.current.value = "1";
    tgllahir.current.value = "";
+   noktp.current.value = "";
    nohp.current.value = "";
    tower.current.value = "A";
    unit.current.value = "";
@@ -123,6 +214,7 @@ const handleReset = (event) => {
    month.current.value = "1";
    tempatlahir.current.value = "";
    tgllahir.current.value = "";
+   noktp.current.value = "";
    nohp.current.value = "";
    tower.current.value = "A";
    unit.current.value = "";
@@ -210,13 +302,21 @@ return(
   </div>
 </div>
 </div> {/* closing of tempattanggallahirdiv */ }
-<div className="Nohptowerunitdiv">
+<div className="Noktpnohpdiv">
+<div className="Noktpdiv">
+  <label htmlFor="Noktpu">No ktp:</label>
+  <div className="Noktpinputdiv">
+    <input type="text" id="Noktpu" ref={noktp} className="Noktpinput" />
+  </div>
+</div> 
 <div className="Nohpdiv">
   <label htmlFor="Nohpu">No hp:</label>
   <div className="Nohpinputdiv">
-    <input type="text" id="Nohpu" ref={nohp} className="Nohpinputu" />
+    <input type="text" id="Nohpu" ref={nohp} className="Nohpinput" />
   </div>
-</div>
+</div> 
+</div> {/* closing of noktpnohpdiv */ }
+<div className="Towerunitdiv" >
 <div className="Towerdiv">
   <label htmlFor="Toweru">Tower:</label>
  <select id="Toweru" ref={tower}>
@@ -241,7 +341,7 @@ return(
     <input id="Unitu" type="text" ref={unit} className="Unitinputu" />
   </div>
 </div>
-</div> {/* closing of nohptowerunitdiv */}
+</div> {/* closing of Towerunitdiv */}
 <div className="Statusperiodsewadiv">
 <div className="Statusdiv">
   <label htmlFor="Statusu">Status:</label>

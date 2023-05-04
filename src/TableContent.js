@@ -51,33 +51,32 @@ return(
                    <div className="colfirst4textspan">Tgl Lahir
                           </div></div>
                 <div  className="div-table-colfirst5">
-                    <div className="colfirst5textspan">No hp
+                    <div className="colfirst5textspan">No ktp
                          </div></div>
-
                 <div  className="div-table-colfirst6">
-                    <div className="colfirst6textspan">Twr
-                         </div></div>
-                <div  className="div-table-colfirst7">
-                    <div className="colfirst7textspan">Unit
+                    <div className="colfirst6textspan">No hp
                          </div></div>
 
+                <div  className="div-table-colfirst7">
+                    <div className="colfirst7textspan">Twr
+                         </div></div>
                 <div  className="div-table-colfirst8">
-                    <div className="colfirst8textspan">Status
+                    <div className="colfirst8textspan">Unit
                          </div></div>
 
                 <div  className="div-table-colfirst9">
-                    <div className="colfirst10textspan">Agen
+                    <div className="colfirst9textspan">Status
                          </div></div>
 
                 <div  className="div-table-colfirst10">
-                    <div className="colfirst11textspan">Emergency hp
+                    <div className="colfirst10textspan">Agen
                          </div></div>
 
                 <div  className="div-table-colfirst11">
-                    <div className="colfirst12textspan">Pemilik unit
+                    <div className="colfirst11textspan">Pemilik unit
                          </div></div>
                 <div  className="div-table-colfirst12">
-                     <div className="colfirst6textspan">Action
+                     <div className="colfirst12textspan">Action
                         </div></div>
              </div>
         {listrow}

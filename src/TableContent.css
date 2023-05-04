@@ -81,12 +81,15 @@
   white-space: nowrap;
 }
 
+
 .div-table-colfirst5 {
   display: block;         
-  width: 12vw;
+  width: 10vw;
+  height: auto;
   text-align: left;         
   background-color:  #00004d;  
 }
+
 
 .colfirst5textspan{
   font-family: serif;
@@ -97,7 +100,7 @@
 
 .div-table-colfirst6 {
   display: block;         
-  width: 3vw;
+  width: 12vw;
   height: auto;
   text-align: left;         
   background-color:  #00004d;  
@@ -110,10 +113,9 @@
   white-space: nowrap;
 }
 
-
 .div-table-colfirst7 {
   display: block;         
-  width: 5vw;
+  width: 3vw;
   height: auto;
   text-align: left;         
   background-color:  #00004d;  
@@ -129,7 +131,7 @@
 
 .div-table-colfirst8 {
   display: block;         
-  width: 6vw;
+  width: 5vw;
   height: auto;
   text-align: left;         
   background-color:  #00004d;  
@@ -145,6 +147,22 @@
 
 .div-table-colfirst9 {
   display: block;         
+  width: 6vw;
+  height: auto;
+  text-align: left;         
+  background-color:  #00004d;  
+}
+
+.colfirst9textspan{
+  font-family: serif;
+   color: white;
+  font-size: 1.1vw;
+  white-space: nowrap;
+}
+
+
+.div-table-colfirst10 {
+  display: block;         
   width: 5vw;
   height: auto;
   text-align: left;         
@@ -159,7 +177,7 @@
 }
 
 
-.div-table-colfirst10 {
+.div-table-colfirst11 {
   display: block;         
   width: 12vw;
   height: auto;
@@ -167,23 +185,8 @@
   background-color:  #00004d;  
 }
 
+
 .colfirst11textspan{
-  font-family: serif;
-   color: white;
-  font-size: 1.1vw;
-  white-space: nowrap;
-}
-
-
-.div-table-colfirst11 {
-  display: block;         
-  width: 10vw;
-  height: auto;
-  text-align: left;         
-  background-color:  #00004d;  
-}
-
-.colfirst12textspan{
   font-family: serif;
    color: white;
   font-size: 1.1vw;
@@ -199,7 +202,7 @@
   background-color:  #00004d;  
 }
 
-.colfirst13textspan{
+.colfirst12textspan{
   font-family: serif;
    color: white;
   font-size: 1.1vw;
