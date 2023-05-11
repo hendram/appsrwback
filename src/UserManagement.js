@@ -58,9 +58,18 @@ const dicarinama = async() => {
      let dicari = {"nama": words.current[0], "lowlimit": lowLimit.current.toString(), "highlimit": highLimit.current.toString()};
       console.log(dicari);
 
+
+try {
+    const tokenu = localStorage.getItem('tokenu');
+
+    if (!tokenu) {
+      // Redirect to the login page
+      return;
+    }
+
  await fetch("https://localhost/caridatanama", {
                method: "POST",
-               headers: { 'Content-Type': 'application/json' },
+               headers: { 'Content-Type': 'application/json', 'Authorization': tokenu },
                body: JSON.stringify(dicari)
 }).then((response) => response.json()
    ).then(function(data){
@@ -74,6 +83,10 @@ const dicarinama = async() => {
          }
 
 });
+} catch (error) {
+    console.error(error);
+  }
+
 }
 
 
@@ -83,9 +96,18 @@ const dicariunit = async() => {
      let dicari = {"tower": words.current[0].charAt(0), "unit": words.current[0].substring(1),  "lowlimit": lowLimit.current.toString(), 
 "highlimit": highLimit.current.toString() };
 
+
+try {
+    const tokenu = localStorage.getItem('tokenu');
+
+    if (!tokenu) {
+      // Redirect to the login page
+      return;
+    }
+
  await fetch("https://localhost/caridataunit", {
                method: "POST",
-               headers: { 'Content-Type': 'application/json' },
+               headers: { 'Content-Type': 'application/json', 'Authorization': tokenu },
                body: JSON.stringify(dicari)
 }).then((response) => response.json()
    ).then(function(data){
@@ -99,6 +121,10 @@ const dicariunit = async() => {
          }
 
 });
+} catch (error) {
+    console.error(error);
+  }
+
 }
 
 const callyangdicari = async() => {

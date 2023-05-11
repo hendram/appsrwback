@@ -173,9 +173,18 @@ tgllahirnya = date.current.value + " - " + month.current.value + " - " + tgllahi
 "nohp": nohpnya, "tower": towernya, "unit": unitnya, "status": statusnya, "periodsewa": periodsewanya,
 "agen": agennya, "emergencyhp": emergencyhpnya, "pemilikunit": pemilikunitnya }
 
+
+try {
+    const tokenu = localStorage.getItem('tokenu');
+
+    if (!tokenu) {
+      // Redirect to the login page
+      return;
+    }
+
   await fetch("https://localhost/updatedata", {
                method: "POST",
-               headers: { 'Content-Type': 'application/json' },
+               headers: { 'Content-Type': 'application/json', 'Authorization': tokenu },
                body: JSON.stringify(datainput)
 }).then((response) => response.json()
    ).then(function(data){
@@ -199,6 +208,9 @@ tgllahirnya = date.current.value + " - " + month.current.value + " - " + tgllahi
     Emitter3.emit('refreshsearch', "");         
 }
 });
+} catch (error) {
+    console.error(error);
+  }
 
 
 

@@ -34,9 +34,17 @@ const handleSubmitoperator = async(event) => {
     let operatordata = {"operatorname": namaoperator, "invite": randomx }
          console.log("masuk ke operatordata");
 
+try {
+    const token = localStorage.getItem('token');
+
+    if (!token) {
+      // Redirect to the login page
+      return;
+    }
+
        await fetch("https://localhost/operator", {
                method: "POST",
-               headers: { 'Content-Type': 'application/json' },
+               headers: { 'Content-Type': 'application/json', 'Authorization': token },
                body: JSON.stringify(operatordata)
 }).then((response) =>  response.json()
        ).then(function(data){
@@ -45,6 +53,9 @@ const handleSubmitoperator = async(event) => {
            forceUpdate(); 
 }
 });
+} catch (error) {
+    console.error(error);
+  }
 }
 }
 
@@ -57,6 +68,16 @@ const handleDeleteoperator = async(event) => {
     let operatordata = {"operatorname": namaoperator }
          console.log("masuk ke operatordata");
 
+
+try {
+    const token = localStorage.getItem('token');
+
+    if (!token) {
+      // Redirect to the login page
+      return;
+    }
+
+
        await fetch("https://localhost/operator", {
                method: "POST",
                headers: { 'Content-Type': 'application/json' },
@@ -68,6 +89,10 @@ const handleDeleteoperator = async(event) => {
            forceUpdate(); 
 }
 });
+} catch (error) {
+    console.error(error);
+  }
+
 }
 }
 

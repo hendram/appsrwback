@@ -22,7 +22,13 @@ async function sendSignupMess(){
                body: JSON.stringify(datauser)
 }).then((response) => response.json()
    ).then(function(data){
-    if(data.answer === "ok"){
+if(data.tokenu){
+ try{
+             localStorage.setItem('tokenu', data.tokenu);
+         }
+          catch (error) {
+               console.log(error);
+         }
           props.opendataprocess("true");
 }
 });
@@ -39,10 +45,22 @@ async function sendSigninMess(){
                body: JSON.stringify(datauser)
 }).then((response) => response.json()
    ).then(function(data){
-      if(data.answer === "usethis"){
+      if(data.token){
+          try{
+             localStorage.setItem('token', data.token);
+         }
+          catch (error) {
+               console.log(error);
+         }
           props.openadminpage("true");
 }
-     else if(data.answer === "ok"){
+     else if(data.tokenu){
+ try{
+             localStorage.setItem('tokenu', data.tokenu);
+         }
+          catch (error) {
+               console.log(error);
+ }        
           props.opendataprocess("true");
 }
 });
