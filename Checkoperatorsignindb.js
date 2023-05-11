@@ -12,12 +12,12 @@ try {
     // Query for a movie that has the title 'Back to the Future'
     const query = { operatorname: operatorname, password: password };
   
-    const exist = await operatortablename.findOne(query, {operatorname: 1, password: 1, _id: 0});
+    const exist = await operatortablename.findOne(query, {operatorname: 1, password: 1, _id: 1});
     if(exist === null ){
       return "notfind";
     }       
     else {
-            return "find";
+            return exist;
 }
 }
 finally {

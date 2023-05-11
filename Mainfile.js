@@ -17,10 +17,19 @@ const Checkoperatorsignindb = require('./Checkoperatorsignindb');
 const Insertoperatordb = require('./Insertoperatordb');
 const Updateoperatordb = require('./Updateoperatordb');
 const Deleteoperatordb = require('./Deleteoperatordb');
+const Checkoperatorid = require('./Checkoperatorid');
+const jwt = require('jsonwebtoken');
+const dotenv = require('dotenv');
 
+dotenv.config();
 let adminpass = "no";
 let newresult = [];
 
+const admin = [{
+id: 1,
+username: "Sekretariat_Rw10",
+password: "greenbaypluit"
+}];
 
 app.use('/', express.static('/home/pinew/appsrw/build'));
 
@@ -29,15 +38,17 @@ app.use(bodyParser.urlencoded({ limit: '500mb', extended: true }))
 app.use(bodyParser.json());
 
 app.use('/user', async function(req, res) {
+        const {operatorname, password, invite} = req.body;
 
-if(req.body.operatorname && req.body.password && req.body.invite) {
-     let resultnya = await Checkoperatordb.checkoperatordb(req.body.operatorname,
-           req.body.invite);
-                if(resultnya === "find"){
-   let resultnya2 = await Updateoperatordb.updateoperatordb(req.body.operatorname, req.body.password,
-req.body.invite);
+if(operatorname && password && invite) {
+     let resultnya = await Checkoperatordb.checkoperatordb(operatorname,
+           invite);
+                if(resultnya){
+   let resultnya2 = await Updateoperatordb.updateoperatordb(operatorname, password,
+invite);
      if(resultnya2 === "1updated"){
-         res.send({answer: "ok"});
+       const tokenu = jwt.sign({id: resultnya._id}, process.env.JWT_SECRET);
+         res.json({tokenu});
 }
        else {
           res.send({kosong: ""});
@@ -46,16 +57,21 @@ req.body.invite);
 }
 
 else {
-     if(req.body.operatorname === "Sekretariat_Rw10" && req.body.password === "greenbaypluit"){
-        res.send({answer: "usethis"});
-         }
-      else {
-     let resultnya = await Checkoperatorsignindb.checkoperatorsignindb(req.body.operatorname,
-           req.body.password);
-                if(resultnya === "find"){
-	   res.send({answer: "ok"});
+        const user = admin.find(a => a.username === operatorname && a.password === password);
+        const token = jwt.sign ({ id: admin.id}, process.env.JWT_SECRET);
+   if(user){      
+  res.json({token});
+       console.log(user);
+}
+    else {
+     let resultnya = await Checkoperatorsignindb.checkoperatorsignindb(operatorname,
+          password);
+                if(resultnya){
+       const tokenu = jwt.sign({id: resultnya._id}, process.env.JWT_SECRET);
+	   res.json({tokenu});
 }
        else {
+          console.log("masuk ke kosong");
           res.send({kosong: ""});
        }
 }
@@ -64,13 +80,24 @@ else {
 
 app.use('/operator', async function(req, res) {
 
-if(req.body.operatorname && req.body.invite){
-              let resultnya = await Checkoperatordb.checkoperatordb(req.body.operatorname,
-           req.body.invite);
+const { operatorname, invite } = req.body;
+const token = req.headers.authorization;
+  if(!token) {
+   return res.status(401).json({message: 'No token provided' });
+ }
+else {
+ try {
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    const userId = decoded.id;
+
+    // Find the user by ID
+     if(admin.id == userId){
+         if(operatorname && invite){
+              let resultnya = await Checkoperatordb.checkoperatordb(operatorname,
+           invite);
             console.log("sampai di checkoperator operator");
                 if(resultnya === "notfind"){
-                   let resultnya2 = await Insertoperatordb.insertoperatordb(req.body.operatorname,
-req.body.invite);
+                   let resultnya2 = await Insertoperatordb.insertoperatordb(operatorname, invite);
           console.log("sampai notfindnya");
               if(resultnya2 === "1inserted"){
                        res.send({answer: "ok"});
@@ -83,8 +110,8 @@ req.body.invite);
      res.send({answer: "notok"});
    } 
 }    // closing if reqbodyoperator and reqbodyinvite
-else if(req.body.operatorname){
-     let resultnya = await Deleteoperatordb.deleteoperatordb(req.body.operatorname);
+else if(operatorname){
+     let resultnya = await Deleteoperatordb.deleteoperatordb(operatorname);
             if(resultnya === "1deleted"){
           console.log("dah didelete ini operatornya");
              res.send({answer: "ok"});
@@ -93,26 +120,48 @@ else if(req.body.operatorname){
 else {
    res.send({kosong: ""});
 }
-
-
-
+}
+}
+catch (err) {
+    res.status(401).json({ message: 'Invalid token' });
+  }
+}
 });
 
 
 app.use('/isidata', async function(req, res) {
-        if(req.body.nama && req.body.tempatlahir && req.body.tgllahir && req.body.noktp && req.body.nohp &&
-req.body.tower && req.body.unit && req.body.status && req.body.periodsewa && req.body.agen &&
-req.body.emergencyhp && req.body.pemilikunit) {
-      let resultnya = await Checkpenghunidb.checkpenghunidb(req.body.nama, req.body.tempatlahir 
-, req.body.tgllahir , req.body.noktp, req.body.nohp ,
-req.body.tower , req.body.unit , req.body.status , req.body.periodsewa , req.body.agen ,
-req.body.emergencyhp , req.body.pemilikunit);
+  const { nama, tempatlahir, tgllahir, noktp, nohp, tower, unit, status, periodsewa, agen, emergencyhp,
+pemilikunit } = req.body;
+
+const tokenu = req.headers.authorization;
+ console.log(tokenu);
+  if(!tokenu) {
+   return res.status(401).json({message: 'No token provided' });
+ }
+
+else {
+ try {
+    const decoded = jwt.verify(tokenu, process.env.JWT_SECRET);
+   const userId = decoded.id;
+   console.log(userId); 
+
+    let resultusercheck = await Checkoperatorid.checkoperatorid(userId);
+        console.log(resultusercheck);
+        if(resultusercheck){
+
+        if(nama && tempatlahir && tgllahir && noktp && nohp &&
+tower && unit && status && periodsewa && agen &&
+emergencyhp && pemilikunit) {
+      let resultnya = await Checkpenghunidb.checkpenghunidb(nama, tempatlahir 
+, tgllahir , noktp, nohp ,
+tower , unit , status , periodsewa , agen ,
+emergencyhp , pemilikunit);
             console.log("dalam isidata");
          if(resultnya === "notfind"){
-            let resultnya2 = await Insertpenghunidb.insertpenghunidb(req.body.nama ,
- req.body.tempatlahir  , req.body.tgllahir , req.body.noktp, req.body.nohp ,
-req.body.tower , req.body.unit , req.body.status , req.body.periodsewa , req.body.agen ,
-req.body.emergencyhp , req.body.pemilikunit);
+            let resultnya2 = await Insertpenghunidb.insertpenghunidb(nama ,
+ tempatlahir  , tgllahir , noktp, nohp ,
+tower , unit , status , periodsewa , agen ,
+emergencyhp , pemilikunit);
              if(resultnya2 === "1inserted"){
                  res.send({answer: "ok"});
            }
@@ -121,12 +170,30 @@ req.body.emergencyhp , req.body.pemilikunit);
        }
        }
   }
+}
+}
+catch (err) {
+    res.status(401).json({ message: 'Invalid token' });
+  }
+}
 });
 
 app.use('/caridatanama', async function(req, res) {
-  if(req.body.nama && req.body.lowlimit && req.body.highlimit){
-             console.log(req.body.lowlimit);
-        let resultnya = await Fetchallpenghuninamadb.fetchallpenghuninamadb(req.body.nama, Number(req.body.lowlimit), Number(req.body.highlimit));
+ const { nama, lowlimit, highlimit } = req.body;
+
+const tokenu = req.headers.authorization;
+  if(!tokenu) {
+   return res.status(401).json({message: 'No token provided' });
+ }
+else {
+ try {
+    const decoded = jwt.verify(tokenu, process.env.JWT_SECRET);
+    const userId = decoded.id;
+    let resultusercheck = await Checkoperatorid.checkoperatorid(userId);
+        if(resultusercheck){
+
+  if(nama && lowlimit && highlimit){
+        let resultnya = await Fetchallpenghuninamadb.fetchallpenghuninamadb(nama, Number(lowlimit), Number(highlimit));
           console.log(resultnya);
         if(resultnya){
       res.send({answer: resultnya});    
@@ -135,13 +202,32 @@ app.use('/caridatanama', async function(req, res) {
           res.send({kosong: ""});
        }
 }  
+}
+}
+catch (err) {
+    res.status(401).json({ message: 'Invalid token' });
+  }
+}
 });
 
 
 app.use('/caridataunit', async function(req, res) {
-  if(req.body.tower && req.body.unit && req.body.lowlimit && req.body.highlimit){
-        let resultnya = await Fetchallpenghuniunitdb.fetchallpenghuniunitdb(req.body.tower, req.body.unit, Number(req.body.lowlimit),
-Number(req.body.highlimit));
+const { tower, unit, lowlimit, highlimit } = req.body;
+
+const tokenu = req.headers.authorization;
+  if(!tokenu) {
+   return res.status(401).json({message: 'No token provided' });
+ }
+else {
+ try {
+    const decoded = jwt.verify(tokenu, process.env.JWT_SECRET);
+    const userId = decoded.id;
+    let resultusercheck = await Checkoperatorid.checkoperatorid(userId);
+        if(resultusercheck){
+
+  if(tower && unit && lowlimit && highlimit){
+        let resultnya = await Fetchallpenghuniunitdb.fetchallpenghuniunitdb(tower, unit, Number(lowlimit),
+Number(highlimit));
           console.log(resultnya);
         if(resultnya){
       res.send({answer: resultnya});    
@@ -150,16 +236,36 @@ Number(req.body.highlimit));
           res.send({kosong: ""});
        }
 }  
+}
+}
+catch (err) {
+    res.status(401).json({ message: 'Invalid token' });
+  }
+}
 });
 
 app.use('/action', async function(req, res) {
-        if(req.body.nama && req.body.tempatlahir && req.body.tgllahir && req.body.noktp && req.body.nohp &&
-req.body.tower && req.body.unit && req.body.status && req.body.periodsewa && req.body.agen &&
-req.body.emergencyhp && req.body.pemilikunit) {
-      let resultnya = await Deletepenghunidb.deletepenghunidb(req.body.nama, req.body.tempatlahir 
-, req.body.tgllahir , req.body.noktp, req.body.nohp ,
-req.body.tower , req.body.unit , req.body.status , req.body.periodsewa , req.body.agen ,
-req.body.emergencyhp , req.body.pemilikunit);
+const {nama, tempatlahir, tgllahir, noktp, nohp, tower, unit, status, periodsewa, agen, emergencyhp,
+pemilikunit } = req.body;      
+
+const tokenu = req.headers.authorization;
+  if(!tokenu) {
+   return res.status(401).json({message: 'No token provided' });
+ }
+else {
+ try {
+    const decoded = jwt.verify(tokenu, process.env.JWT_SECRET);
+    const userId = decoded.id;
+    let resultusercheck = await Checkoperatorid.checkoperatorid(userId);
+        if(resultusercheck){
+
+ if(nama && tempatlahir && tgllahir && noktp && nohp &&
+tower && unit && status && periodsewa && agen &&
+emergencyhp && pemilikunit) {
+      let resultnya = await Deletepenghunidb.deletepenghunidb(nama, tempatlahir 
+, tgllahir , noktp, nohp ,
+tower , unit , status , periodsewa , agen ,
+emergencyhp , pemilikunit);
          if(resultnya === "1deleted"){
            res.send({answer: "ok"});
 }
@@ -167,21 +273,45 @@ req.body.emergencyhp , req.body.pemilikunit);
           res.send({kosong: ""});
        }
 }
+}
+}
+catch (err) {
+    res.status(401).json({ message: 'Invalid token' });
+  }
+}
 });
 
 app.use('/updatedata', async function(req, res) {
-        if(req.body.oldnama && req.body.oldtempatlahir && req.body.oldtgllahir && req.body.oldnoktp && 
-req.body.oldnohp && req.body.oldtower && req.body.oldunit && req.body.oldstatus && req.body.oldperiodsewa && req.body.oldagen &&
-req.body.oldemergencyhp && req.body.oldpemilikunit && req.body.nama && req.body.tempatlahir && req.body.tgllahir && req.body.noktp && req.body.nohp &&
-req.body.tower && req.body.unit && req.body.status && req.body.periodsewa && req.body.agen &&
-req.body.emergencyhp && req.body.pemilikunit) {
-      let resultnya = await Updatepenghunidb.updatepenghunidb(req.body.oldnama, req.body.oldtempatlahir 
-, req.body.oldtgllahir , req.body.oldnoktp, req.body.oldnohp ,
-req.body.oldtower , req.body.oldunit , req.body.oldstatus , req.body.oldperiodsewa , req.body.oldagen ,
-req.body.oldemergencyhp , req.body.oldpemilikunit, req.body.nama, req.body.tempatlahir 
-, req.body.tgllahir , req.body.noktp, req.body.nohp ,
-req.body.tower , req.body.unit , req.body.status , req.body.periodsewa , req.body.agen ,
-req.body.emergencyhp , req.body.pemilikunit);
+
+const { oldnama, oldtempatlahir, oldtgllahir, oldnoktp, oldnohp, oldtower, oldunit, oldstatus, oldperiodsewa,
+oldagen, oldemergencyhp, oldpemilikunit, nama, tempatlahir, tgllahir, noktp, nohp, tower, unit, status, 
+periodsewa, agen,
+emergencyhp, pemilikunit } = req.body;
+
+const tokenu = req.headers.authorization;
+  if(!tokenu) {
+   return res.status(401).json({message: 'No token provided' });
+ }
+else {
+ try {
+    const decoded = jwt.verify(tokenu, process.env.JWT_SECRET);
+    const userId = decoded.id;
+    let resultusercheck = await Checkoperatorid.checkoperatorid(userId);
+        if(resultusercheck){
+
+
+        if(oldnama && oldtempatlahir && oldtgllahir && oldnoktp && 
+oldnohp && oldtower && oldunit && oldstatus && oldperiodsewa && oldagen &&
+oldemergencyhp && oldpemilikunit && nama && tempatlahir && tgllahir && noktp && nohp &&
+tower && unit && status && periodsewa && agen &&
+emergencyhp && pemilikunit) {
+      let resultnya = await Updatepenghunidb.updatepenghunidb(oldnama, oldtempatlahir 
+, oldtgllahir , oldnoktp, oldnohp ,
+oldtower , oldunit , oldstatus , oldperiodsewa , oldagen ,
+oldemergencyhp , oldpemilikunit, nama, tempatlahir 
+, tgllahir , noktp, nohp ,
+tower , unit , status , periodsewa , agen ,
+emergencyhp , pemilikunit);
   if(resultnya === "1updated"){
            res.send({answer: "ok"});
      console.log(resultnya);
@@ -189,6 +319,12 @@ req.body.emergencyhp , req.body.pemilikunit);
        else {
           res.send({kosong: ""});
        } 
+}
+}
+}
+catch (err) {
+    res.status(401).json({ message: 'Invalid token' });
+  }
 }
 });
 
